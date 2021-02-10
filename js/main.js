@@ -21,20 +21,24 @@ function onRenderGallery() {
 function onImgClicked(imgId) {
   gMeme = createMeme(imgId);
   let img = gMeme.selectedImgId;
-  let txt = gMeme.lines[0].txt;
+  let txt = gMeme.lines[0].txt; 
   let size = gMeme.lines[0].size;
   let align = gMeme.lines[0].align;
   let color = gMeme.lines[0].color;
 
-  drawImg(img);
-  drawTxt(txt, size, align, color);
+  drawImg(img, drawTxt, txt, size, align, color);
+  // drawTxt(txt, size, align, color);
 }
 
-function drawImg(imgId) {
+function drawImg(imgId, myCallBack, txt, size, align, color) {
+  let imgFromDb = gImgs.find(imgDb => {
+    return imgDb.id === imgId;
+  })
   const img = new Image();
-  img.src = `img/gallery-imgs/${imgId}.jpg`;
+  img.src = imgFromDb.url;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height); //img,x,y,xend,yend
+    myCallBack(txt, size, align, color);
   };
 }
 
