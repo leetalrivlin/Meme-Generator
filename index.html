@@ -6,7 +6,9 @@
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+
+  <body onload="onInit()">
+
     <header class="header-container">
       <div
         class="header-content main-container flex space-between align-center"
@@ -34,7 +36,7 @@
 
     <section id="img-gallery" class="img-gallery-container">
       <div class="img-gallery main-container">
-        <img src="img/gallery-imgs/1.jpg" class="gallery-item" alt="" />
+        <img src="img/gallery-imgs/1.jpg" class="gallery-item item-1" alt="" />
         <img src="img/gallery-imgs/2.jpg" class="gallery-item" alt="" />
         <img src="img/gallery-imgs/3.jpg" class="gallery-item" alt="" />
         <img src="img/gallery-imgs/4.jpg" class="gallery-item" alt="" />
@@ -103,6 +105,7 @@
       <img src="img/logo/LOGO.png" class="logo" />
       <p>all rights reserved 2019</p>
     </footer>
+    <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
