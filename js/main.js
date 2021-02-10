@@ -3,32 +3,28 @@ var gElCanvas;
 var gCtx;
 
 function onInit() {
-    // onRenderGallery();
+    onRenderGallery();
     gElCanvas = document.getElementById('my-canvas');
     gCtx = gElCanvas.getContext('2d');
-    drawImg();
 }
 
 function onRenderGallery() {
     let imgs = gImgs;
+    var strHtml = imgs.map((img) => {
+        return `<img src="${img.url}" class="gallery-item item-${img.id}" onclick="onImgClicked(${img.id})"/>`
+}).join('');
+document.querySelector('.img-gallery').innerHTML = strHtml;
 }
 
-onCreateMeme(5);
-
-function onCreateMeme(imgId) {
+function onImgClicked(imgId) {
+    drawImg(imgId);
     createMeme(imgId);
 }
 
-function drawImg() {
-    const elImg = document.querySelector('.item-1');
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+function drawImg(imgId) {
+    const img = new Image();
+    img.src = `img/gallery-imgs/${imgId}.jpg`;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height); //img,x,y,xend,yend
+    }
 }
-
-// drawImgFromlocal()
-// function drawImgFromlocal() {
-//     const img = new Image()
-//     img.src = 'img/gallery-imgs/5.jpg';
-//     img.onload = () => {
-//         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
-//     }
-// }
