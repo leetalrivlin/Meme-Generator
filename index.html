@@ -8,12 +8,16 @@
   </head>
   <body>
     <header class="header-container">
-      <div class="header-content main-container flex space-between align-center">
+      <div
+        class="header-content main-container flex space-between align-center"
+      >
         <img src="img/logo/LOGO.png" class="logo" />
         <ul class="main-nav clean-list flex">
-          <li><a href="#">Gallery</a></li>
+          <li><a href="#img-gallery">Gallery</a></li>
           |
-          <li><a href="#">About</a></li>
+          <li><a href="#memes">Memes</a></li>
+          |
+          <li><a href="#footer">About</a></li>
         </ul>
       </div>
     </header>
@@ -28,7 +32,7 @@
       </ul>
     </div>
 
-    <section class="img-gallery-container">
+    <section id="img-gallery" class="img-gallery-container">
       <div class="img-gallery main-container">
         <img src="img/gallery-imgs/1.jpg" class="gallery-item" alt="" />
         <img src="img/gallery-imgs/2.jpg" class="gallery-item" alt="" />
@@ -38,13 +42,63 @@
         <img src="img/gallery-imgs/6.jpg" class="gallery-item" alt="" />
         <img src="img/gallery-imgs/7.jpg" class="gallery-item" alt="" />
         <img src="img/gallery-imgs/8.jpg" class="gallery-item" alt="" />
+        <img src="img/gallery-imgs/9.jpg" class="gallery-item" alt="" />
       </div>
     </section>
 
-    <section class="meme-editor-container"></section>
+    <section class="meme-editor-container main-container flex">
+      <div class="canvas-container">
+        <canvas
+          id="my-canvas"
+          width="400"
+          height="400"
+          style="outline: 1px solid rgb(0, 0, 0)"
+        ></canvas>
+      </div>
 
-    <footer
-      class="footer-container flex flex-column space-between align-center"
+      <section class="editor flex flex-column space-between align-center">
+        <div class="control-box flex flex-column">
+          <input type="text" />
+          <div class="txt-btns">
+            <button>Text-focus</button>
+            <button>Text-move-down</button>
+            <button>Text-move-up</button>
+            <button>Plus</button>
+            <button>Delete</button>
+          </div>
+        </div>
+
+        <div class="advanced-edit flex flex-column">
+          <div class="txt-btns flex justify-center">
+            <button>Larger Font</button>
+            <button>Smaller Font</button>
+            <button>Align left</button>
+            <button>Align center</button>
+            <button>Align right</button>
+          </div>
+          <div class="txt-btns flex justify-center">
+            <select name="" id="">
+              <option value="">Arial</option>
+            </select>
+            <button>Shadow</button>
+            <input type="color" />
+          </div>
+        </div>
+
+        <div class="accessories-picker flex justify-center">
+          <div class="txt-btns">
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
+        </div>
+
+        <button class="share-btn">Share</button>
+
+      </section>
+    </section>
+
+    <footer id="footer"
+      class="footer-container flex flex-column justify-center align-center"
     >
       <img src="img/logo/LOGO.png" class="logo" />
       <p>all rights reserved 2019</p>
