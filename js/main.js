@@ -21,33 +21,42 @@ function onRenderGallery() {
 function onImgClicked(imgId) {
   gMeme = createMeme(imgId);
   let img = gMeme.selectedImgId;
-  let txt = gMeme.lines[0].txt; 
-  let size = gMeme.lines[0].size;
-  let align = gMeme.lines[0].align;
-  let color = gMeme.lines[0].color;
+  let lines = gMeme.lines;
 
-  drawImg(img, drawTxt, txt, size, align, color);
-  // drawTxt(txt, size, align, color);
+  drawImg(img, callDrawTxt, lines);
+
+  function callDrawTxt(lines) {
+    lines.forEach((line) => {
+      let txt = line.txt;
+      let size = line.size;
+      let align = line.align;
+      let color = line.color;
+      let x = line.x;
+      let y = line.y;
+
+      drawTxt(txt, size, align, color, x, y);
+    });
+  }
 }
 
-function drawImg(imgId, myCallBack, txt, size, align, color) {
-  let imgFromDb = gImgs.find(imgDb => {
+function drawImg(imgId, myCallBack, lines) {
+  let imgFromDb = gImgs.find((imgDb) => {
     return imgDb.id === imgId;
-  })
+  });
   const img = new Image();
   img.src = imgFromDb.url;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height); //img,x,y,xend,yend
-    myCallBack(txt, size, align, color);
+    myCallBack(lines);
   };
 }
 
-function drawTxt(txt, size, align, color) {
+function drawTxt(txt, size, align, color, x, y) {
   gCtx.lineWidth = 1;
   gCtx.strokeStyle = 'black';
   gCtx.fillStyle = color;
   gCtx.font = `${size}px Impact`;
   gCtx.textAlign = align;
-  gCtx.fillText(txt, 100, 100);
-  gCtx.strokeText(txt, 100, 100);
+  gCtx.fillText(txt, x, y);
+  gCtx.strokeText(txt, x, y);
 }

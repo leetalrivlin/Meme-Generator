@@ -21,10 +21,25 @@ function createMeme(imgId) {
       {
         txt: 'I never eat Falafel',
         size: 20,
-        align: 'left',
+        align: 'center',
         color: 'red',
+        x: (gElCanvas.width / 2 ),
+        y: 50,
+      },
+      {
+        txt: 'A different line',
+        size: 20,
+        align: 'center',
+        color: 'white',
+        x: (gElCanvas.width / 2 ),
+        y: (gElCanvas.height - 50),
       },
     ],
   };
+  return gMeme;
+}
+
+function addLineToMeme(addedLine) {
+  gMeme.lines.push(addedLine);
   return gMeme;
 }
