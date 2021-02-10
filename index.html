@@ -8,7 +8,6 @@
   </head>
 
   <body onload="onInit()">
-
     <header class="header-container">
       <div
         class="header-content main-container flex space-between align-center"
@@ -35,17 +34,7 @@
     </div>
 
     <section id="img-gallery" class="img-gallery-container">
-      <div class="img-gallery main-container">
-        <!-- <img src="img/gallery-imgs/1.jpg" class="gallery-item item-1"/>
-        <img src="img/gallery-imgs/2.jpg" class="gallery-item item-2"/>
-        <img src="img/gallery-imgs/3.jpg" class="gallery-item item-3"/>
-        <img src="img/gallery-imgs/4.jpg" class="gallery-item" alt="" />
-        <img src="img/gallery-imgs/5.jpg" class="gallery-item" alt="" />
-        <img src="img/gallery-imgs/6.jpg" class="gallery-item" alt="" />
-        <img src="img/gallery-imgs/7.jpg" class="gallery-item" alt="" />
-        <img src="img/gallery-imgs/8.jpg" class="gallery-item" alt="" />
-        <img src="img/gallery-imgs/9.jpg" class="gallery-item" alt="" /> -->
-      </div>
+      <div class="img-gallery main-container"></div>
     </section>
 
     <section class="meme-editor-container main-container flex">
@@ -60,7 +49,7 @@
 
       <section class="editor flex flex-column space-between align-center">
         <div class="control-box flex flex-column">
-          <input type="text" />
+          <input type="text" class="txt-chosen" placeholder="Enter text" />
           <div class="txt-btns">
             <button>Text-focus</button>
             <button>Text-move-down</button>
@@ -95,11 +84,11 @@
         </div>
 
         <button class="share-btn">Share</button>
-
       </section>
     </section>
 
-    <footer id="footer"
+    <footer
+      id="footer"
       class="footer-container flex flex-column justify-center align-center"
     >
       <img src="img/logo/LOGO.png" class="logo" />
