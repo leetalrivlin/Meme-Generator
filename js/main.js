@@ -20,18 +20,18 @@ function onRenderGallery() {
 
 function onRenderCanvas(imgId) {
   gMeme = createMeme(imgId);
-  
-  drawImg(imgId, callDrawTxt);
+
+  renderImg(imgId, callRenderText);
 }
 
-function callDrawTxt() {
+function callRenderText() {
   let lines = gMeme.lines;
   lines.forEach((line) => {
-    drawTxt(line);
+    RenderText(line);
   });
 }
 
-function drawImg(imgId, myCallBack) {
+function renderImg(imgId, myCallBack) {
   let imgFromDb = gImgs.find((imgDb) => {
     return imgDb.id === imgId;
   });
@@ -43,7 +43,7 @@ function drawImg(imgId, myCallBack) {
   };
 }
 
-function drawTxt(line) {
+function RenderText(line) {
   gCtx.lineWidth = 1;
   gCtx.strokeStyle = 'black';
   gCtx.fillStyle = line.color;
@@ -56,7 +56,29 @@ function drawTxt(line) {
 function onGetInputVal() {
   let elInput = document.querySelector('.txt-input').value;
   gMeme = updateMemeLineTxt(elInput);
-  let imgId = gMeme.selectedImgId;
 
-  drawImg(imgId, callDrawTxt);
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function increaseFont() {
+  let lineId = gMeme.selectedLineIdx;
+  let line = gMeme.lines[lineId];
+
+  if (line.size > 60) return;
+  line.size += 5;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function decreaseFont() {
+  let lineId = gMeme.selectedLineIdx;
+  let line = gMeme.lines[lineId];
+
+  if (line.size < 20) return;
+  line.size -= 5;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
 }

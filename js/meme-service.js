@@ -19,8 +19,8 @@ function createMeme(imgId) {
     selectedLineIdx: 1,
     lines: [
       {
-        txt: 'I never eat Falafel',
-        size: 20,
+        txt: 'I love Falafel',
+        size: 40,
         align: 'center',
         color: 'red',
         x: (gElCanvas.width / 2 ),
@@ -28,7 +28,7 @@ function createMeme(imgId) {
       },
       {
         txt: '',
-        size: 20,
+        size: 40,
         align: 'center',
         color: 'white',
         x: (gElCanvas.width / 2 ),
