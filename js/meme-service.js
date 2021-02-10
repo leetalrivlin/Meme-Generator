@@ -16,7 +16,7 @@ var gMeme;
 function createMeme(imgId) {
   var gMeme = {
     selectedImgId: imgId,
-    selectedLineIdx: 0,
+    selectedLineIdx: 1,
     lines: [
       {
         txt: 'I never eat Falafel',
@@ -27,7 +27,7 @@ function createMeme(imgId) {
         y: 50,
       },
       {
-        txt: 'A different line',
+        txt: '',
         size: 20,
         align: 'center',
         color: 'white',
@@ -39,7 +39,25 @@ function createMeme(imgId) {
   return gMeme;
 }
 
-function addLineToMeme(addedLine) {
-  gMeme.lines.push(addedLine);
-  return gMeme;
+function updateMemeLineTxt(txt) {
+  let idx = gMeme.selectedLineIdx
+  gMeme.lines[idx].txt = txt;
+    return gMeme;
 }
+
+// function createLineMeme(txt) {
+//   return {
+//     txt: txt,
+//     size: 20,
+//     align: 'center',
+//     color: 'white',
+//     x: (gElCanvas.width / 2 ),
+//     y: (gElCanvas.height - 50),
+//   }
+// }
+
+
+// function addMemeLine(addedLine) {
+//   gMeme.lines.push(addedLine);
+//   return gMeme;
+// }
