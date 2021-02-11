@@ -166,3 +166,8 @@ function moveLineUp() {
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
 }
+
+function toggleMenu(elBtn) {
+  document.body.classList.toggle('menu-open');
+  elBtn.innerText = (document.body.classList.contains('menu-open')) ? 'X' : '☰';
+}

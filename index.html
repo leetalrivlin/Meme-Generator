@@ -13,28 +13,41 @@
         class="header-content main-container flex space-between align-center"
       >
         <img src="img/logo/LOGO.png" class="logo" />
+
+        <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
+          ☰
+        </button>
+
         <ul class="main-nav clean-list flex">
-          <li><a href="#img-gallery" onClick="showGallery()">Gallery</a></li>
-          |
-          <li><a href="#memes">Memes</a></li>
-          |
-          <li><a href="#footer">About</a></li>
+          <li><a href="#img-gallery" class="nav-item flex justify-center"
+              onClick="showGallery()">Gallery</a>
+          </li>
+          <p class="nav-line flex justify-center align-center">|</p>
+          <li>
+            <a href="#memes" class="nav-item flex justify-center">Memes</a>
+          </li>
+          <p class="nav-line flex justify-center align-center">|</p>
+          <li><a href="#" class="nav-item flex justify-center">About</a></li>
         </ul>
       </div>
     </header>
 
-    <section id="img-gallery" class="img-gallery-container main-container">
-      <div class="filter-container main-container flex">
-        <input type="search" placeholder="Enter search keyword" />
+    <section id="img-gallery" class="img-gallery-container">
 
-        <ul class="keywords-list clean-list flex space-between">
-          <li>Cute</li>
-          <li>Funny</li>
-          <li>Smart</li>
-        </ul>
-      </div>
+      <section class="filter-section">
+        <div class="filter-container main-container flex space-between align-center">
+          <input type="search" placeholder="Enter search keyword" />
 
-      <div class="img-gallery"></div>
+          <ul class="keywords-list clean-list flex space-between">
+            <li class="key-item">Cute</li>
+            <li class="key-item">Funny</li>
+            <li class="key-item">Smart</li>
+          </ul>
+
+        </div>
+      </section>
+
+      <div class="img-gallery main-container"></div>
     </section>
 
     <section class="meme-editor-container main-container">
@@ -101,7 +114,6 @@
     </section>
 
     <footer
-      id="footer"
       class="footer-container flex flex-column justify-center align-center"
     >
       <img src="img/logo/LOGO.png" class="logo" />
