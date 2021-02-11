@@ -182,6 +182,8 @@ function onDeleteLine() {
 
   deleteLine(lineIdx);
 
+  gMeme.selectedLineIdx = lineIdx + 1;
+
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
 }
