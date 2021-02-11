@@ -2,6 +2,8 @@
 var gElCanvas;
 var gCtx;
 
+var gTextBoxInterval;
+
 function onInit() {
   onRenderGallery();
   gElCanvas = document.getElementById('my-canvas');
@@ -54,8 +56,23 @@ function renderText(line) {
 
   let txtWidth = gCtx.measureText(line.txt, line.x, line.y);
   line.textWidth = txtWidth.width;
+}
 
-  renderTextBox();
+function swichLine() {
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+
+  var idxLine = gMeme.selectedLineIdx;
+  console.log('the begining idx:',idxLine);
+  let nextIdxLine = idxLine + 1;
+  if (nextIdxLine === gMeme.lines.length) {
+    nextIdxLine = 0;
+  }
+  gMeme.selectedLineIdx = nextIdxLine;
+  console.log('the new line idx:',gMeme.selectedLineIdx);
+
+  gTextBoxInterval = setTimeout(renderTextBox, 100);
+  // renderTextBox();
 }
 
 function renderTextBox() {
@@ -71,9 +88,6 @@ function renderTextBox() {
   gCtx.rect(rectX, rectY, rectWidth, rectHight);
   gCtx.strokeStyle = 'white';
   gCtx.stroke();
-
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderText);
 }
 
 function onGetInputVal() {
@@ -83,7 +97,11 @@ function onGetInputVal() {
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
+
+  clearTimeout(gTextBoxInterval);
 }
+
+
 
 function increaseFont() {
   let line = getLineFromId();
@@ -103,10 +121,6 @@ function decreaseFont() {
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
-}
-
-function swichLine() {
-  let line = getLineFromId();
 }
 
 function moveLineDown() {

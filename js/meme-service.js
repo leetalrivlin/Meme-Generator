@@ -16,7 +16,7 @@ var gMeme;
 function createMeme(imgId) {
   var gMeme = {
     selectedImgId: imgId,
-    selectedLineIdx: 1,
+    selectedLineIdx: 0,
     lines: [
       {
         txt: 'I love Falafel',
