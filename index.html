@@ -14,7 +14,7 @@
       >
         <img src="img/logo/LOGO.png" class="logo" />
         <ul class="main-nav clean-list flex">
-          <li><a href="#img-gallery">Gallery</a></li>
+          <li><a href="#img-gallery" onClick="showGallery()">Gallery</a></li>
           |
           <li><a href="#memes">Memes</a></li>
           |
@@ -23,21 +23,21 @@
       </div>
     </header>
 
-    <div class="filter-container main-container flex">
-      <input type="search" placeholder="Enter search keyword" />
+    <section id="img-gallery" class="img-gallery-container main-container">
+      <div class="filter-container main-container flex">
+        <input type="search" placeholder="Enter search keyword" />
 
-      <ul class="keywords-list clean-list flex space-between">
-        <li>Cute</li>
-        <li>Funny</li>
-        <li>Smart</li>
-      </ul>
-    </div>
+        <ul class="keywords-list clean-list flex space-between">
+          <li>Cute</li>
+          <li>Funny</li>
+          <li>Smart</li>
+        </ul>
+      </div>
 
-    <section id="img-gallery" class="img-gallery-container">
-      <div class="img-gallery main-container"></div>
+      <div class="img-gallery"></div>
     </section>
 
-    <section class="meme-editor-container main-container flex">
+    <section class="meme-editor-container main-container">
       <div class="canvas-container">
         <canvas
           id="my-canvas"
@@ -49,11 +49,20 @@
 
       <section class="editor flex flex-column space-between align-center">
         <div class="control-box flex flex-column">
-          <input type="text" class="txt-input" placeholder="Enter text" onkeyup="onGetInputVal()"/>
+          <input
+            type="text"
+            class="txt-input"
+            placeholder="Enter text"
+            onkeyup="onGetInputVal()"
+          />
           <div class="txt-btns">
             <button onclick="swichLine()">Text-focus</button>
-            <button class="Text-move-down" onclick="moveLineDown()">Text-move-down</button>
-            <button class="Text-move-up" onclick="moveLineUp()">Text-move-up</button>
+            <button class="Text-move-down" onclick="moveLineDown()">
+              Text-move-down
+            </button>
+            <button class="Text-move-up" onclick="moveLineUp()">
+              Text-move-up
+            </button>
             <button>Plus</button>
             <button>Delete</button>
           </div>
@@ -61,8 +70,12 @@
 
         <div class="advanced-edit flex flex-column">
           <div class="txt-btns flex justify-center">
-            <button class="increase-font" onclick="increaseFont()">Larger Font</button>
-            <button class="decrease-font" onclick="decreaseFont()">Smaller Font</button>
+            <button class="increase-font" onclick="increaseFont()">
+              Larger Font
+            </button>
+            <button class="decrease-font" onclick="decreaseFont()">
+              Smaller Font
+            </button>
             <button>Align left</button>
             <button>Align center</button>
             <button>Align right</button>
@@ -92,7 +105,7 @@
       class="footer-container flex flex-column justify-center align-center"
     >
       <img src="img/logo/LOGO.png" class="logo" />
-      <p>all rights reserved 2019</p>
+      <p>All rights reserved 2021</p>
     </footer>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>

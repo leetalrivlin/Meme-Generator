@@ -14,16 +14,39 @@ function onRenderGallery() {
   let imgs = gImgs;
   var strHtml = imgs
     .map((img) => {
-      return `<img src="${img.url}" class="gallery-item item-${img.id}" onclick="onRenderCanvas(${img.id})"/>`;
+      return `<img src="${img.url}" class="gallery-item item-${img.id}" onclick="onClickedImg(${img.id})"/>`;
     })
     .join('');
   document.querySelector('.img-gallery').innerHTML = strHtml;
 }
 
-function onRenderCanvas(imgId) {
-  gMeme = createMeme(imgId);
+function onClickedImg(imgId) {
+  hideGallery();
 
+  gMeme = createMeme(imgId);
   renderImg(imgId, callRenderText);
+}
+
+function hideEditor() {
+  let elEditor = document.querySelector('.meme-editor-container');
+  elEditor.style.display = 'none';
+}
+
+function showEditor() {
+  let elEditor = document.querySelector('.meme-editor-container');
+  elEditor.style.display = 'flex';
+}
+
+function hideGallery() {
+  let elGallery = document.querySelector('.img-gallery-container');
+  elGallery.style.display = 'none';
+  showEditor();
+}
+
+function showGallery() {
+  let elGallery = document.querySelector('.img-gallery-container');
+  elGallery.style.display = 'block';
+  hideEditor();
 }
 
 function callRenderText() {
@@ -72,16 +95,17 @@ function swichLine() {
   console.log('the new line idx:',gMeme.selectedLineIdx);
 
   gTextBoxInterval = setTimeout(renderTextBox, 100);
-  // renderTextBox();
 }
 
 function renderTextBox() {
   let line = getLineFromId();
   if (!line.textWidth) return;
 
-  let rectWidth = line.textWidth + 10;
+  // let rectWidth = line.textWidth + 10;
+  let rectWidth = gElCanvas.width - 5;
   let rectHight = line.size + 3;
-  let rectX = line.x - line.textWidth / 2 - 5;
+  // let rectX = line.x - line.textWidth / 2 - 5;
+  let rectX = 5;
   let rectY = line.y - rectHight + 5;
 
   gCtx.beginPath();
