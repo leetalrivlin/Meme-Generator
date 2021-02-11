@@ -282,13 +282,15 @@ a:hover {
     width: 100%;
     background-color: #ff7f00;
     box-shadow: none;
+    visibility: hidden;
 
-    transform: translateX(100%);
-    transition: transform 0.8s;
+    /* transform: translateY(-100%);
+    transition: transform 0.8s; */
   }
 
   body.menu-open .main-nav {
-    transform: translateX(0);
+    /* transform: translateY(0); */
+    visibility: visible;
   }
 
   .main-nav .nav-item {

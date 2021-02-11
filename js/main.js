@@ -86,13 +86,13 @@ function swichLine() {
   renderImg(imgId, callRenderText);
 
   var idxLine = gMeme.selectedLineIdx;
-  console.log('the begining idx:',idxLine);
+  console.log('the begining idx:', idxLine);
   let nextIdxLine = idxLine + 1;
   if (nextIdxLine === gMeme.lines.length) {
     nextIdxLine = 0;
   }
   gMeme.selectedLineIdx = nextIdxLine;
-  console.log('the new line idx:',gMeme.selectedLineIdx);
+  console.log('the new line idx:', gMeme.selectedLineIdx);
 
   gTextBoxInterval = setTimeout(renderTextBox, 100);
 }
@@ -124,8 +124,6 @@ function onGetInputVal() {
 
   clearTimeout(gTextBoxInterval);
 }
-
-
 
 function increaseFont() {
   let line = getLineFromId();
@@ -167,7 +165,39 @@ function moveLineUp() {
   renderImg(imgId, callRenderText);
 }
 
+function changeFillColor() {
+  let line = getLineFromId();
+  let fillColor = document.querySelector('.fill-color-btn').value;
+
+  line.color = fillColor;
+}
+
+function alignText(elBtn) {
+  let line = getLineFromId();
+  let alignLeft = document.querySelector('.align-left-btn');
+  let alignCenter = document.querySelector('.align-center-btn');
+  let alignRight = document.querySelector('.align-right-btn');
+
+  switch (elBtn) {
+    case alignLeft:
+      line.x = 20;
+      line.align = 'left';
+      break;
+    case alignCenter:
+      line.x = gElCanvas.width / 2;
+      line.align = 'center';
+      break;
+    case alignRight:
+      line.x = gElCanvas.width - 20;
+      line.align = 'right';
+      break;
+  }
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
 function toggleMenu(elBtn) {
   document.body.classList.toggle('menu-open');
-  elBtn.innerText = (document.body.classList.contains('menu-open')) ? 'X' : '☰';
+  elBtn.innerText = document.body.classList.contains('menu-open') ? 'X' : '☰';
 }

@@ -89,16 +89,16 @@
             <button class="decrease-font editor-btn" onclick="decreaseFont()">
               <img class="btn-icon" src="img/icons/decrease font - icon.png">
             </button>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/align-to-left.png"></button>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/center-text-alignment.png"></button>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/align-to-right.png"></button>
+            <button class="align-left-btn editor-btn" onclick="alignText(this)"><img class="btn-icon" src="img/icons/align-to-left.png"></button>
+            <button class="align-center-btn editor-btn" onclick="alignText(this)"><img class="btn-icon" src="img/icons/center-text-alignment.png"></button>
+            <button class="align-right-btn editor-btn" onclick="alignText(this)"><img class="btn-icon" src="img/icons/align-to-right.png"></button>
           </div>
           <div class="txt-btns flex justify-center">
             <select class="input-font-family" name="" id="">
               <option value="">Impact</option>
             </select>
             <button class="editor-btn"><img class="btn-icon" src="img/icons/text stroke.png"></button>
-            <input class="editor-btn" type="color" />
+            <input class="fill-color-btn editor-btn" type="color" value="#FFFFFF" onchange="changeFillColor()"/>
           </div>
         </div>
 
