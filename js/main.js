@@ -87,6 +87,7 @@ function renderText(line) {
 }
 
 function swichLine() {
+  
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
 
@@ -99,6 +100,10 @@ function swichLine() {
   gMeme.selectedLineIdx = nextIdxLine;
 
   gTextBoxInterval = setTimeout(renderTextBox, 100);
+
+  let elInput = document.querySelector('.txt-input')
+  let line = getLineFromId();
+  elInput.value = line.txt;
 }
 
 function renderTextBox() {
