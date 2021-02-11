@@ -69,36 +69,36 @@
             onkeyup="onGetInputVal()"
           />
           <div class="txt-btns">
-            <button onclick="swichLine()"><img class="btn-icon" src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-            <button class="Text-move-down" onclick="moveLineDown()">
+            <button class="editor-btn" onclick="swichLine()"><img class="btn-icon" src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <button class="Text-move-down editor-btn" onclick="moveLineDown()">
               <img class="btn-icon" src="img/icons/arrow down.png">
             </button>
-            <button class="Text-move-up" onclick="moveLineUp()">
+            <button class="Text-move-up editor-btn" onclick="moveLineUp()">
               <img class="btn-icon" src="img/icons/arrow up.png">
             </button>
-            <button><img class="btn-icon" src="img/icons/add.png"></button>
-            <button><img class="btn-icon" src="img/icons/trash.png"></button>
+            <button class="editor-btn"><img class="btn-icon" src="img/icons/add.png"></button>
+            <button class="editor-btn"><img class="btn-icon" src="img/icons/trash.png"></button>
           </div>
         </div>
 
         <div class="advanced-edit flex flex-column">
           <div class="txt-btns flex justify-center">
-            <button class="increase-font" onclick="increaseFont()">
+            <button class="increase-font editor-btn" onclick="increaseFont()">
               <img class="btn-icon" src="img/icons/increase font - icon.png">
             </button>
-            <button class="decrease-font" onclick="decreaseFont()">
+            <button class="decrease-font editor-btn" onclick="decreaseFont()">
               <img class="btn-icon" src="img/icons/decrease font - icon.png">
             </button>
-            <button><img class="btn-icon" src="img/icons/align-to-left.png"></button>
-            <button><img class="btn-icon" src="img/icons/center-text-alignment.png"></button>
-            <button><img class="btn-icon" src="img/icons/align-to-right.png"></button>
+            <button class="editor-btn"><img class="btn-icon" src="img/icons/align-to-left.png"></button>
+            <button class="editor-btn"><img class="btn-icon" src="img/icons/center-text-alignment.png"></button>
+            <button class="editor-btn"><img class="btn-icon" src="img/icons/align-to-right.png"></button>
           </div>
           <div class="txt-btns flex justify-center">
-            <select name="" id="">
-              <option value="">Arial</option>
+            <select class="input-font-family" name="" id="">
+              <option value="">Impact</option>
             </select>
-            <button><img class="btn-icon" src="img/icons/text stroke.png"></button>
-            <input type="color" />
+            <button class="editor-btn"><img class="btn-icon" src="img/icons/text stroke.png"></button>
+            <input class="editor-btn" type="color" />
           </div>
         </div>
 
