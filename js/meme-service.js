@@ -16,7 +16,7 @@ var gMeme;
 function createMeme(imgId) {
   var gMeme = {
     selectedImgId: imgId,
-    selectedLineIdx: 0,
+    selectedLineIdx: 1,
     lines: [
       {
         txt: 'I love Falafel',
@@ -25,6 +25,7 @@ function createMeme(imgId) {
         color: 'red',
         x: (gElCanvas.width / 2 ),
         y: 50,
+        textWidth: 0,
       },
       {
         txt: 'Second line',
@@ -33,6 +34,7 @@ function createMeme(imgId) {
         color: 'white',
         x: (gElCanvas.width / 2 ),
         y: (gElCanvas.height - 50),
+        textWidth: 0,
       },
     ],
   };

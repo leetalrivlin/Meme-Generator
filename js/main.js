@@ -27,7 +27,7 @@ function onRenderCanvas(imgId) {
 function callRenderText() {
   let lines = gMeme.lines;
   lines.forEach((line) => {
-    RenderText(line);
+    renderText(line);
   });
 }
 
@@ -43,7 +43,7 @@ function renderImg(imgId, myCallBack) {
   };
 }
 
-function RenderText(line) {
+function renderText(line) {
   gCtx.lineWidth = 1;
   gCtx.strokeStyle = 'black';
   gCtx.fillStyle = line.color;
@@ -51,11 +51,34 @@ function RenderText(line) {
   gCtx.textAlign = line.align;
   gCtx.fillText(line.txt, line.x, line.y);
   gCtx.strokeText(line.txt, line.x, line.y);
+
+  let txtWidth = gCtx.measureText(line.txt, line.x, line.y);
+  line.textWidth = txtWidth.width;
+
+  renderTextBox();
+}
+
+function renderTextBox() {
+  let line = getLineFromId();
+  if (!line.textWidth) return;
+
+  let rectWidth = line.textWidth + 10;
+  let rectHight = line.size + 3;
+  let rectX = line.x - line.textWidth / 2 - 5;
+  let rectY = line.y - rectHight + 5;
+
+  gCtx.beginPath();
+  gCtx.rect(rectX, rectY, rectWidth, rectHight);
+  gCtx.strokeStyle = 'white';
+  gCtx.stroke();
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
 }
 
 function onGetInputVal() {
   let elInput = document.querySelector('.txt-input').value;
-  let lineIdx = gMeme.selectedLineIdx
+  let lineIdx = gMeme.selectedLineIdx;
   gMeme = updateMemeLineTxt(elInput, lineIdx);
 
   let imgId = gMeme.selectedImgId;
@@ -82,9 +105,13 @@ function decreaseFont() {
   renderImg(imgId, callRenderText);
 }
 
+function swichLine() {
+  let line = getLineFromId();
+}
+
 function moveLineDown() {
   let line = getLineFromId();
-  
+
   if (line.y >= gElCanvas.height) return;
   line.y += 5;
 
@@ -94,8 +121,8 @@ function moveLineDown() {
 
 function moveLineUp() {
   let line = getLineFromId();
-  
-  if ((line.y - line.size) <= 0) return;
+
+  if (line.y - line.size <= 0) return;
   line.y -= 5;
 
   let imgId = gMeme.selectedImgId;
