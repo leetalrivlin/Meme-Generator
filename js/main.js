@@ -70,9 +70,9 @@ function renderImg(imgId, myCallBack) {
 
 function renderText(line) {
   gCtx.lineWidth = 1;
-  gCtx.strokeStyle = 'black';
+  gCtx.strokeStyle = line.stroke;
   gCtx.fillStyle = line.color;
-  gCtx.font = `${line.size}px Impact`;
+  gCtx.font = `${line.size}px ${line.fontFamily}`;
   gCtx.textAlign = line.align;
   gCtx.fillText(line.txt, line.x, line.y);
   gCtx.strokeText(line.txt, line.x, line.y);
@@ -86,13 +86,12 @@ function swichLine() {
   renderImg(imgId, callRenderText);
 
   var idxLine = gMeme.selectedLineIdx;
-  console.log('the begining idx:', idxLine);
   let nextIdxLine = idxLine + 1;
+
   if (nextIdxLine === gMeme.lines.length) {
     nextIdxLine = 0;
   }
   gMeme.selectedLineIdx = nextIdxLine;
-  console.log('the new line idx:', gMeme.selectedLineIdx);
 
   gTextBoxInterval = setTimeout(renderTextBox, 100);
 }
@@ -165,11 +164,24 @@ function moveLineUp() {
   renderImg(imgId, callRenderText);
 }
 
+function changeStrokeColor() {
+  let line = getLineFromId();
+  let strokeColor = document.querySelector('.stroke-color-btn').value;
+
+  line.stroke = strokeColor;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
 function changeFillColor() {
   let line = getLineFromId();
   let fillColor = document.querySelector('.fill-color-btn').value;
 
   line.color = fillColor;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
 }
 
 function alignText(elBtn) {
@@ -192,6 +204,16 @@ function alignText(elBtn) {
       line.align = 'right';
       break;
   }
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function changeFontFamily(elSelect) {
+  let line = getLineFromId();
+  let fontFamily = elSelect.value;
+
+  line.fontFamily = fontFamily;
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);

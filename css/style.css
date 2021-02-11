@@ -115,6 +115,7 @@ a:hover {
   border-radius: 12px;
   background-color: #ffffff;
   margin: 5px;
+  cursor: pointer;
 }
 
 .editor .btn-icon {
@@ -144,6 +145,7 @@ a:hover {
   border-radius: 12px;
   background-color: #ff7f00;
   color: #e3e3e3;
+  cursor: pointer;
 }
 
 .footer-container {

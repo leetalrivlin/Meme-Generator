@@ -21,8 +21,10 @@ function createMeme(imgId) {
       {
         txt: 'I love Falafel',
         size: 40,
+        fontFamily: 'Impact',
         align: 'center',
         color: 'red',
+        stroke: 'black',
         x: (gElCanvas.width / 2 ),
         y: 50,
         textWidth: 0,
@@ -30,8 +32,10 @@ function createMeme(imgId) {
       {
         txt: 'Second line',
         size: 40,
+        fontFamily: 'Impact',
         align: 'center',
         color: 'white',
+        stroke: 'black',
         x: (gElCanvas.width / 2 ),
         y: (gElCanvas.height - 50),
         textWidth: 0,
@@ -57,8 +61,10 @@ function getLineFromId() {
 //   return {
 //     txt: txt,
 //     size: 20,
+//     fontFamily: 'Impact',
 //     align: 'center',
 //     color: 'white',
+//     stroke: 'black',
 //     x: (gElCanvas.width / 2 ),
 //     y: (gElCanvas.height - 50),
 //   }
