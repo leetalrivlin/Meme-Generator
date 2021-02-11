@@ -16,7 +16,7 @@ var gMeme;
 function createMeme(imgId) {
   var gMeme = {
     selectedImgId: imgId,
-    selectedLineIdx: 1,
+    selectedLineIdx: 0,
     lines: [
       {
         txt: 'I love Falafel',
@@ -27,7 +27,7 @@ function createMeme(imgId) {
         y: 50,
       },
       {
-        txt: '',
+        txt: 'Second line',
         size: 40,
         align: 'center',
         color: 'white',
@@ -39,10 +39,16 @@ function createMeme(imgId) {
   return gMeme;
 }
 
-function updateMemeLineTxt(txt) {
-  let idx = gMeme.selectedLineIdx
-  gMeme.lines[idx].txt = txt;
+function updateMemeLineTxt(txt, lineIdx) {
+  gMeme.lines[lineIdx].txt = txt;
     return gMeme;
+}
+
+function getLineFromId() {
+  let lineId = gMeme.selectedLineIdx;
+  let line = gMeme.lines[lineId];
+
+  return line;
 }
 
 // function createLineMeme(txt) {

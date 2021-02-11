@@ -55,15 +55,15 @@ function RenderText(line) {
 
 function onGetInputVal() {
   let elInput = document.querySelector('.txt-input').value;
-  gMeme = updateMemeLineTxt(elInput);
+  let lineIdx = gMeme.selectedLineIdx
+  gMeme = updateMemeLineTxt(elInput, lineIdx);
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
 }
 
 function increaseFont() {
-  let lineId = gMeme.selectedLineIdx;
-  let line = gMeme.lines[lineId];
+  let line = getLineFromId();
 
   if (line.size > 60) return;
   line.size += 5;
@@ -73,11 +73,30 @@ function increaseFont() {
 }
 
 function decreaseFont() {
-  let lineId = gMeme.selectedLineIdx;
-  let line = gMeme.lines[lineId];
+  let line = getLineFromId();
 
   if (line.size < 20) return;
   line.size -= 5;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function moveLineDown() {
+  let line = getLineFromId();
+  
+  if (line.y >= gElCanvas.height) return;
+  line.y += 5;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function moveLineUp() {
+  let line = getLineFromId();
+  
+  if ((line.y - line.size) <= 0) return;
+  line.y -= 5;
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
