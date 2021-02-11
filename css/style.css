@@ -98,6 +98,11 @@ a:hover {
   margin-right: auto;
 }
 
+.editor .btn-icon {
+    width: 26px;
+    height: 26px;
+}
+
 .footer-container {
   width: 100%;
   height: 207px;
