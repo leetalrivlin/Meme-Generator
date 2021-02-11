@@ -57,21 +57,27 @@ function getLineFromId() {
   return line;
 }
 
-// function createLineMeme(txt) {
-//   return {
-//     txt: txt,
-//     size: 20,
-//     fontFamily: 'Impact',
-//     align: 'center',
-//     color: 'white',
-//     stroke: 'black',
-//     x: (gElCanvas.width / 2 ),
-//     y: (gElCanvas.height - 50),
-//   }
-// }
+function deleteLine(lineId) {
+  gMeme.lines.splice(lineId, 1);
+
+  return gMeme;
+}
+
+function createnewLine() {
+  return {
+    txt: 'Change text',
+    size: 40,
+    fontFamily: 'Impact',
+    align: 'center',
+    color: 'white',
+    stroke: 'black',
+    x: (gElCanvas.width / 2 ),
+    y: (gElCanvas.height / 2),
+  }
+}
 
 
-// function addMemeLine(addedLine) {
-//   gMeme.lines.push(addedLine);
-//   return gMeme;
-// }
+function addMemeLine(addedLine) {
+  gMeme.lines.push(addedLine);
+  return gMeme;
+}

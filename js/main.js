@@ -51,6 +51,11 @@ function showGallery() {
 
 function callRenderText() {
   let lines = gMeme.lines;
+  if (!lines || !lines.length) return;
+  if (lines.length === 1) {
+    let line = getLineFromId();
+    renderText(line);
+  }
   lines.forEach((line) => {
     renderText(line);
   });
@@ -63,7 +68,7 @@ function renderImg(imgId, myCallBack) {
   const img = new Image();
   img.src = imgFromDb.url;
   img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height); //img,x,y,xend,yend
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     myCallBack();
   };
 }
@@ -100,10 +105,8 @@ function renderTextBox() {
   let line = getLineFromId();
   if (!line.textWidth) return;
 
-  // let rectWidth = line.textWidth + 10;
   let rectWidth = gElCanvas.width - 5;
   let rectHight = line.size + 3;
-  // let rectX = line.x - line.textWidth / 2 - 5;
   let rectX = 5;
   let rectY = line.y - rectHight + 5;
 
@@ -159,6 +162,25 @@ function moveLineUp() {
 
   if (line.y - line.size <= 0) return;
   line.y -= 5;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function onAddLine() {
+  let newLine = createnewLine();
+  addMemeLine(newLine);
+
+  gMeme.selectedLineIdx = gMeme.lines.length - 1;
+
+  let imgId = gMeme.selectedImgId;
+  renderImg(imgId, callRenderText);
+}
+
+function onDeleteLine() {
+  let lineIdx = gMeme.selectedLineIdx;
+
+  deleteLine(lineIdx);
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);

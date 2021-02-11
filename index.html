@@ -8,10 +8,10 @@
   </head>
 
   <body onload="onInit()">
+
     <header class="header-container">
-      <div
-        class="header-content main-container flex space-between align-center"
-      >
+      <div class="header-content main-container flex space-between align-center">
+
         <img src="img/logo/LOGO.png" class="logo" />
 
         <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
@@ -19,7 +19,9 @@
         </button>
 
         <ul class="main-nav clean-list flex">
-          <li><a href="#img-gallery" class="nav-item flex justify-center"
+          <li>
+            <a href="#img-gallery"
+              class="nav-item flex justify-center"
               onClick="showGallery()">Gallery</a>
           </li>
           <p class="nav-line flex justify-center align-center">|</p>
@@ -29,6 +31,7 @@
           <p class="nav-line flex justify-center align-center">|</p>
           <li><a href="#" class="nav-item flex justify-center">About</a></li>
         </ul>
+
       </div>
     </header>
 
@@ -36,6 +39,7 @@
 
       <section class="filter-section">
         <div class="filter-container main-container flex space-between align-center">
+          
           <input type="search" placeholder="Enter search keyword" />
 
           <ul class="keywords-list clean-list flex space-between">
@@ -69,39 +73,79 @@
             onkeyup="onGetInputVal()"
           />
           <div class="txt-btns">
-            <button class="editor-btn" onclick="swichLine()"><img class="btn-icon" src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <button class="editor-btn" onclick="swichLine()">
+              <img
+                class="btn-icon"
+                src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"
+              />
+            </button>
             <button class="Text-move-down editor-btn" onclick="moveLineDown()">
-              <img class="btn-icon" src="img/icons/arrow down.png">
+              <img class="btn-icon" src="img/icons/arrow down.png" />
             </button>
             <button class="Text-move-up editor-btn" onclick="moveLineUp()">
-              <img class="btn-icon" src="img/icons/arrow up.png">
+              <img class="btn-icon" src="img/icons/arrow up.png" />
             </button>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/add.png"></button>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/trash.png"></button>
+            <button class="editor-btn" onclick="onAddLine()">
+              <img class="btn-icon" src="img/icons/add.png" />
+            </button>
+            <button class="editor-btn" onclick="onDeleteLine()">
+              <img class="btn-icon" src="img/icons/trash.png" />
+            </button>
           </div>
         </div>
 
         <div class="advanced-edit flex flex-column">
           <div class="txt-btns flex justify-center">
             <button class="increase-font editor-btn" onclick="increaseFont()">
-              <img class="btn-icon" src="img/icons/increase font - icon.png">
+              <img class="btn-icon" src="img/icons/increase font - icon.png" />
             </button>
             <button class="decrease-font editor-btn" onclick="decreaseFont()">
-              <img class="btn-icon" src="img/icons/decrease font - icon.png">
+              <img class="btn-icon" src="img/icons/decrease font - icon.png" />
             </button>
-            <button class="align-left-btn editor-btn" onclick="alignText(this)"><img class="btn-icon" src="img/icons/align-to-left.png"></button>
-            <button class="align-center-btn editor-btn" onclick="alignText(this)"><img class="btn-icon" src="img/icons/center-text-alignment.png"></button>
-            <button class="align-right-btn editor-btn" onclick="alignText(this)"><img class="btn-icon" src="img/icons/align-to-right.png"></button>
+            <button class="align-left-btn editor-btn" onclick="alignText(this)">
+              <img class="btn-icon" src="img/icons/align-to-left.png" />
+            </button>
+            <button
+              class="align-center-btn editor-btn"
+              onclick="alignText(this)"
+            >
+              <img class="btn-icon" src="img/icons/center-text-alignment.png" />
+            </button>
+            <button
+              class="align-right-btn editor-btn"
+              onclick="alignText(this)"
+            >
+              <img class="btn-icon" src="img/icons/align-to-right.png" />
+            </button>
           </div>
           <div class="txt-btns flex justify-center">
-            <select class="input-font-family" name="" onchange="changeFontFamily(this)">
+            <select
+              class="input-font-family"
+              name=""
+              onchange="changeFontFamily(this)"
+            >
               <option value="impact">Impact</option>
               <option value="Arial">Arial</option>
               <option value="Verdana">Verdana</option>
             </select>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/text stroke.png"><input class="stroke-color-btn" type="color" onchange="changeStrokeColor()"></button>
-            <button class="editor-btn"><img class="btn-icon" src="img/icons/paint-board-and-brush.png"><input class="fill-color-btn" type="color" value="#FFFFFF" onchange="changeFillColor()"></button>
-            <!-- <input class="fill-color-btn editor-btn" type="color" value="#FFFFFF" onchange="changeFillColor()"/> -->
+            <button class="editor-btn">
+              <img class="btn-icon" src="img/icons/text stroke.png" /><input
+                class="stroke-color-btn"
+                type="color"
+                onchange="changeStrokeColor()"
+              />
+            </button>
+            <button class="editor-btn">
+              <img
+                class="btn-icon"
+                src="img/icons/paint-board-and-brush.png"
+              /><input
+                class="fill-color-btn"
+                type="color"
+                value="#FFFFFF"
+                onchange="changeFillColor()"
+              />
+            </button>
           </div>
         </div>
 
@@ -122,7 +166,9 @@
       <img src="img/logo/LOGO.png" class="logo" />
       <p>All rights reserved 2021</p>
     </footer>
+
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
+
   </body>
 </html>
