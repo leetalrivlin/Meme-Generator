@@ -8,7 +8,6 @@ function onInit() {
   onRenderGallery();
   gElCanvas = document.getElementById('my-canvas');
   gCtx = gElCanvas.getContext('2d');
-  loadMemesFromStorage();
 }
 
 function onRenderGallery() {
@@ -88,7 +87,6 @@ function renderText(line) {
 }
 
 function swichLine() {
-  
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
 
@@ -102,7 +100,7 @@ function swichLine() {
 
   gTextBoxInterval = setTimeout(renderTextBox, 100);
 
-  let elInput = document.querySelector('.txt-input')
+  let elInput = document.querySelector('.txt-input');
   let line = getLineFromId();
   elInput.value = line.txt;
 }
@@ -260,6 +258,30 @@ function toggleShareMenu() {
 
 function closeShareMenu() {
   document.body.classList.remove('btn-menu-open');
+}
+
+function onInitMemes() {
+  let savedMemes = loadMemesFromStorage();
+
+  let strHtml = savedMemes
+    .map((savedImg) => {
+      return `<img class="my-meme-img meme-${savedImg.id}" src="${savedImg.dataURL}"/>`;
+    })
+    .join('');
+
+  document.querySelector('.memes-grid').innerHTML = strHtml;
+}
+
+function onAddToMemes() {
+  addToMemes();
+}
+
+function showMemesPage() {
+  onInitMemes();
+  document.querySelector('.img-gallery-container').style.display = 'none';
+  document.querySelector('.meme-editor-container').style.display = 'none';
+  document.querySelector('.memes-container').style.display = 'block';
+  closeShareMenu();
 }
 
 function onDownloadMeme(elLink) {

@@ -16,12 +16,19 @@ body {
   background-color: #e3e3e3;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 .833em;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 img {
   width: 100%;
 }
 
 button {
   font: 400 13.3333px Montserrat;
+  cursor: pointer;
 }
 
 a {
@@ -204,6 +211,25 @@ body.btn-menu-open .share-btns-container {
 body.btn-menu-open .main-share-btn {
   color: #040a2c;
 }
+
+.memes-container {
+  display: none;
+}
+
+.memes-grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 200px);
+  grid-auto-rows: 200px;
+  gap: 10px;
+}
+
+.my-meme-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .footer-container {
   width: 100%;

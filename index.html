@@ -8,11 +8,11 @@
   </head>
 
   <body onload="onInit()">
-
     <header class="header-container">
-      <div class="header-content main-container flex space-between align-center">
-
-        <a href="#img-gallery"><img src="img/logo/LOGO.png" class="logo" /></a> 
+      <div
+        class="header-content main-container flex space-between align-center"
+      >
+        <a href="#img-gallery"><img src="img/logo/LOGO.png" class="logo" /></a>
 
         <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
           ☰
@@ -20,26 +20,33 @@
 
         <ul class="main-nav clean-list flex">
           <li>
-            <a href="#img-gallery"
+            <a
+              href="#img-gallery"
               class="nav-item flex justify-center"
-              onClick="showGallery()">Gallery</a>
+              onClick="showGallery()"
+              >Gallery</a
+            >
           </li>
           <p class="nav-line flex justify-center align-center">|</p>
           <li>
-            <a href="#memes" class="nav-item flex justify-center">Memes</a>
+            <a
+              href="#memes"
+              class="nav-item flex justify-center"
+              onclick="showMemesPage()"
+              >Memes</a
+            >
           </li>
           <p class="nav-line flex justify-center align-center">|</p>
           <li><a href="#" class="nav-item flex justify-center">About</a></li>
         </ul>
-
       </div>
     </header>
 
     <section id="img-gallery" class="img-gallery-container">
-
       <section class="filter-section">
-        <div class="filter-container main-container flex space-between align-center">
-          
+        <div
+          class="filter-container main-container flex space-between align-center"
+        >
           <input type="search" placeholder="Enter search keyword 🔍" />
 
           <ul class="keywords-list clean-list flex space-between">
@@ -47,7 +54,6 @@
             <li class="key-item">Funny</li>
             <li class="key-item">Smart</li>
           </ul>
-
         </div>
       </section>
 
@@ -156,19 +162,36 @@
           </div>
         </div>
 
-        <button class="main-share-btn share-btn" onclick="toggleShareMenu()">Share</button>
-
-        
+        <button class="main-share-btn share-btn" onclick="toggleShareMenu()">
+          Share
+        </button>
       </section>
-      
+
       <div class="share-btns-container">
         <button class="x-btn clean-button" onclick="closeShareMenu()">X</button>
-        <a class="share-btn flex align-center justify-center" href="" download="my-img.jpg" onclick="onDownloadMeme(this)">Download</a>
-        <button class="share-btn" onclick="saveMemesToStorage()">Save</button>
-        <button class="share-btn" onclick="loadMemesFromStorage()">Import</button>
+        <a
+          class="share-btn flex align-center justify-center"
+          href=""
+          download="my-img.jpg"
+          onclick="onDownloadMeme(this)"
+          >Download</a
+        >
+        <button class="share-btn" onclick="onAddToMemes()">Save</button>
+        <button class="share-btn">
+          Import
+        </button>
       </div>
     </section>
 
+    <section id="memes" class="memes-container main-container">
+      <h2>Your Favorite Memes</h2>
+
+      <div class="memes-grid">
+        <!-- <img class="my-meme-img meme-1" src=""/>
+        <img class="my-meme-img meme-2" src=""/> -->
+      </div>
+
+    </section>
 
     <footer
       class="footer-container flex flex-column justify-center align-center"
@@ -181,6 +204,5 @@
     <script src="js/upload-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
-
   </body>
 </html>

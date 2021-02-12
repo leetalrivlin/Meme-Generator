@@ -95,17 +95,28 @@ function addMemeLine(addedLine) {
   return gMeme;
 }
 
+function addToMemes() {
+  let savedMemes = loadMemesFromStorage();
+  if (!savedMemes || !savedMemes.length) {
+    savedMemes = [];
+  }
+  let memeDataUrl = gElCanvas.toDataURL();
+
+  let savedMeme = {
+    id: savedMemes.length + 1,
+    dataURL: memeDataUrl,
+  };
+
+  savedMemes.push(savedMeme);
+  gSavedMemes = savedMemes;
+  saveMemesToStorage();
+}
+
 function saveMemesToStorage() {
-  // saveToStorage(SAVED_KEY, gSavedMemes);
-  localStorage.setItem(SAVED_KEY, gElCanvas.toDataURL());
+  saveToStorage(SAVED_KEY, gSavedMemes);
 }
 
 function loadMemesFromStorage() {
-  // loadFromStorage(SAVED_KEY, gSavedMemes);
-  var dataURL = localStorage.getItem(SAVED_KEY);
-  var img = new Image();
-  img.src = dataURL;
-  img.onload = function () {
-    gCtx.drawImage(img, 0, 0);
-  };
+  let savedMemes = loadFromStorage(SAVED_KEY);
+  return savedMemes;
 }
