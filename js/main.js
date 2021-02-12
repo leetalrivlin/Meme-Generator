@@ -252,3 +252,12 @@ function toggleMenu(elBtn) {
   document.body.classList.toggle('menu-open');
   elBtn.innerText = document.body.classList.contains('menu-open') ? 'X' : '☰';
 }
+
+function toggleShareMenu() {
+  document.body.classList.toggle('btn-menu-open');
+}
+
+function onDownloadMeme(elLink) {
+  var imgContent = gElCanvas.toDataURL('image/jpeg');
+  elLink.href = imgContent;
+}

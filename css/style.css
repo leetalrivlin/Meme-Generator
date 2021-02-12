@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Montserrat;
+  src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+html {
+  font-family: Montserrat;
+}
+
 body {
   margin: 0;
   background-color: #e3e3e3;
@@ -9,6 +18,10 @@ body {
 
 img {
   width: 100%;
+}
+
+button {
+  font: 400 13.3333px Montserrat;
 }
 
 a {
@@ -135,15 +148,43 @@ a:hover {
   padding: 10px;
 }
 
-.editor .share-btn {
+.share-btn {
   width: 120px;
   height: 50px;
   border: none;
+  font-size: 13.3333px;
   border-radius: 12px;
   background-color: #ff7f00;
   color: #e3e3e3;
   cursor: pointer;
+  outline-style: none;
 }
+
+.share-btns-container .share-btn:focus {
+  color: #040a2c;
+}
+
+.share-btns-container .share-btn {
+  margin: 0 0 10px 0;
+}
+
+.share-btns-container {
+  background-color: #ffffff98;
+  padding: 1px 1px 30px 1px;
+  border-radius: 12px;
+  z-index: 1;
+
+  visibility: hidden;
+}
+
+body.btn-menu-open .share-btns-container {
+  visibility: visible;
+}
+
+body.btn-menu-open .main-share-btn{
+  color: #040a2c;
+}
+
 
 .footer-container {
   width: 100%;
@@ -248,6 +289,11 @@ a:hover {
   .editor .share-btn {
     height: 40px;
   }
+
+  /* .share-btns-container {
+    position: relative;
+    bottom: 135px;
+  } */
 }
 
 @media (max-width: 750px) {

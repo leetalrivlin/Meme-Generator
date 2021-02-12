@@ -12,7 +12,7 @@
     <header class="header-container">
       <div class="header-content main-container flex space-between align-center">
 
-        <img src="img/logo/LOGO.png" class="logo" />
+        <a href="#img-gallery"><img src="img/logo/LOGO.png" class="logo" /></a> 
 
         <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
           ☰
@@ -156,9 +156,16 @@
           </div>
         </div>
 
-        <button class="share-btn">Share</button>
+        <div class="share-btns-container flex flex-column">
+          <a class="share-btn flex align-center justify-center" href="" download="my-img.jpg" onclick="onDownloadMeme(this)">Download</a>
+          <button class="share-btn">Save</button>
+        </div>
+
+        <button class="main-share-btn share-btn" onclick="toggleShareMenu()">Share</button>
+
       </section>
     </section>
+
 
     <footer
       class="footer-container flex flex-column justify-center align-center"
@@ -167,6 +174,7 @@
       <p>All rights reserved 2021</p>
     </footer>
 
+    <script src="js/upload-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
 
