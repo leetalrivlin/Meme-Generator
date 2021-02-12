@@ -156,15 +156,17 @@
           </div>
         </div>
 
-        <div class="share-btns-container flex flex-column">
-          <a class="share-btn flex align-center justify-center" href="" download="my-img.jpg" onclick="onDownloadMeme(this)">Download</a>
-          <button class="share-btn" onclick="saveMemesToStorage()">Save</button>
-          <button class="share-btn" onclick="loadMemesFromStorage()">Import</button>
-        </div>
-
         <button class="main-share-btn share-btn" onclick="toggleShareMenu()">Share</button>
 
+        
       </section>
+      
+      <div class="share-btns-container">
+        <button class="x-btn clean-button" onclick="closeShareMenu()">X</button>
+        <a class="share-btn flex align-center justify-center" href="" download="my-img.jpg" onclick="onDownloadMeme(this)">Download</a>
+        <button class="share-btn" onclick="saveMemesToStorage()">Save</button>
+        <button class="share-btn" onclick="loadMemesFromStorage()">Import</button>
+      </div>
     </section>
 
 

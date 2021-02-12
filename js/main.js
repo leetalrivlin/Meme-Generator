@@ -258,6 +258,10 @@ function toggleShareMenu() {
   document.body.classList.toggle('btn-menu-open');
 }
 
+function closeShareMenu() {
+  document.body.classList.remove('btn-menu-open');
+}
+
 function onDownloadMeme(elLink) {
   var imgContent = gElCanvas.toDataURL('image/jpeg');
   elLink.href = imgContent;

@@ -155,10 +155,6 @@ a:hover {
   padding: 10px;
 }
 
-.editor .main-share-btn {
-position: relative;
-}
-
 .share-btn {
   width: 120px;
   height: 50px;
@@ -175,22 +171,34 @@ position: relative;
   color: #040a2c;
 }
 
+.x-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color:  #ff7f00;
+  font-size: 1.3rem;
+  background: none;
+}
+
 .share-btns-container .share-btn {
-  margin: 0 0 10px 0;
+  margin: 10px;
 }
 
 .share-btns-container {
-  background-color: #ffffff98;
-  padding: 1px 1px 30px 1px;
+  background-color: #ffffff;
+  padding: 30px;
   border-radius: 12px;
   z-index: 1;
-  position: relative;
 
-  visibility: hidden;
+  display: none;
 }
 
 body.btn-menu-open .share-btns-container {
-  visibility: visible;
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body.btn-menu-open .main-share-btn {
@@ -301,10 +309,13 @@ body.btn-menu-open .main-share-btn {
     height: 40px;
   }
 
-  /* .share-btns-container {
-    position: relative;
-    bottom: 135px;
-  } */
+  body.btn-menu-open .share-btns-container {
+    flex-direction: column;
+  }
+
+  .share-btns-container .share-btn {
+    margin: 10px 0 0 0;
+  }
 }
 
 @media (max-width: 750px) {
