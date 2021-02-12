@@ -40,7 +40,7 @@
       <section class="filter-section">
         <div class="filter-container main-container flex space-between align-center">
           
-          <input type="search" placeholder="Enter search keyword" />
+          <input type="search" placeholder="Enter search keyword 🔍" />
 
           <ul class="keywords-list clean-list flex space-between">
             <li class="key-item">Cute</li>
@@ -158,7 +158,8 @@
 
         <div class="share-btns-container flex flex-column">
           <a class="share-btn flex align-center justify-center" href="" download="my-img.jpg" onclick="onDownloadMeme(this)">Download</a>
-          <button class="share-btn">Save</button>
+          <button class="share-btn" onclick="saveMemesToStorage()">Save</button>
+          <button class="share-btn" onclick="loadMemesFromStorage()">Import</button>
         </div>
 
         <button class="main-share-btn share-btn" onclick="toggleShareMenu()">Share</button>
@@ -174,6 +175,7 @@
       <p>All rights reserved 2021</p>
     </footer>
 
+    <script src="js/storage-service.js"></script>
     <script src="js/upload-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>

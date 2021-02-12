@@ -79,6 +79,13 @@ a:hover {
   line-height: 120px;
 }
 
+.filter-container input {
+  border: none;
+  border-bottom: 1px solid #040a2c;
+  padding: 5px 10px;
+  outline: none;
+}
+
 .keywords-list .key-item {
   margin-inline-start: 20px;
   color: #040a2c;
@@ -148,6 +155,10 @@ a:hover {
   padding: 10px;
 }
 
+.editor .main-share-btn {
+position: relative;
+}
+
 .share-btn {
   width: 120px;
   height: 50px;
@@ -173,6 +184,7 @@ a:hover {
   padding: 1px 1px 30px 1px;
   border-radius: 12px;
   z-index: 1;
+  position: relative;
 
   visibility: hidden;
 }
@@ -181,10 +193,9 @@ body.btn-menu-open .share-btns-container {
   visibility: visible;
 }
 
-body.btn-menu-open .main-share-btn{
+body.btn-menu-open .main-share-btn {
   color: #040a2c;
 }
-
 
 .footer-container {
   width: 100%;
