@@ -17,9 +17,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 .833em;
   font-weight: 500;
-  line-height: 1.4;
 }
 
 img {
@@ -87,6 +85,7 @@ a:hover {
 }
 
 .filter-container input {
+  min-width: 230px;
   border: none;
   border-bottom: 1px solid #040a2c;
   padding: 5px 10px;
@@ -116,9 +115,15 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
+}
+
+.img-gallery .gallery-item:hover {
+  border: 2px solid  #ff7f00;
 }
 
 .meme-editor-container {
+  margin-top: 20px;
   display: none;
 }
 
@@ -160,6 +165,11 @@ a:hover {
   background-color: #ffffff;
   margin: 5px;
   padding: 10px;
+}
+
+.editor .stroke-color-btn,
+.editor .fill-color-btn {
+display: none;
 }
 
 .share-btn {
@@ -216,6 +226,21 @@ body.btn-menu-open .main-share-btn {
   display: none;
 }
 
+.memes-container h2 {
+  text-align: center;
+  margin: 50px
+}
+
+.memes-container .no-memes {
+  text-align: center;
+  margin: 150px auto 150px auto;
+  display: none;
+}
+
+.memes-container .no-memes a {
+  color: #ff7f00;
+}
+
 .memes-grid {
   display: grid;
   justify-content: center;
@@ -229,7 +254,6 @@ body.btn-menu-open .main-share-btn {
   height: 100%;
   object-fit: cover;
 }
-
 
 .footer-container {
   width: 100%;

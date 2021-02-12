@@ -1,5 +1,5 @@
 'use strict';
-var gKeywords = { happy: 12, 'funny puk': 1 };
+var gKeywords = { 'funny': 12, 'animal': 1 , 'cute': 5, 'puppy': 3,};
 var gImgs = [
   { id: 1, url: 'img/gallery-imgs/1.jpg', keywords: ['funny', 'man'] },
   {
@@ -26,6 +26,10 @@ var gImgs = [
 var gMeme;
 var gSavedMemes;
 const SAVED_KEY = 'saved-memes';
+
+function getKeyList() {
+  return gKeywords;
+}
 
 function createMeme(imgId) {
   var gMeme = {
