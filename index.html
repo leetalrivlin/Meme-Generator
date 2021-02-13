@@ -44,19 +44,17 @@
         >
           <input 
             type="search" 
+            class="keywords-list"
             list="keywords-list-options" 
             placeholder="Enter search keyword    🔍" 
-            onchange="onSetFilter()" 
-            name="filterBy"/>
+            onchange="onSetFilterByList()" 
+          />
 
           <datalist id="keywords-list-options" class="keywords-input-list">
           </datalist>
 
 
-          <ul class="keywords-list clean-list flex space-between">
-            <!-- <li class="key-item">Cute</li>
-            <li class="key-item">Funny</li>
-            <li class="key-item">Smart</li> -->
+          <ul class="keywords-words clean-list flex space-between">
           </ul>
         </div>
       </section>

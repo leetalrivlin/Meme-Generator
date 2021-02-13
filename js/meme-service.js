@@ -1,7 +1,13 @@
 'use strict';
 
 var gFilterBy = 'all';
-var gKeywords = { 'funny': 12, 'animal': 1 , 'cute': 5, 'puppy': 3,};
+var gKeywords = [
+  { word: 'all', counted: 5 },
+  { word: 'funny', counted: 12 },
+  { word: 'animal', counted: 7 },
+  { word: 'cute', counted: 2 },
+  { word: 'puppy', counted: 5 },
+];
 var gImgs = [
   { id: 1, url: 'img/gallery-imgs/1.jpg', keywords: ['funny', 'man'] },
   {
@@ -33,26 +39,22 @@ function getKeyWords() {
   return gKeywords;
 }
 
-function getWords() {
-  let keyWords = Object.getOwnPropertyNames(gKeywords).sort();
-  return keyWords;
-}
-
 function setFilter(filterBy) {
-  gFilterBy = filterBy
+  gFilterBy = filterBy;
 }
 
 function getImgByFilters() {
   // let keyWords = getKeyWords();
   if (gFilterBy === 'all' || gFilterBy === '') return gImgs;
 
-    let filteredImgs = gImgs.filter(img => {
-      return (gFilterBy === 'funny' && img.keywords.includes('funny') ||
-             gFilterBy === 'animal' && img.keywords.includes('animal') ||
-             gFilterBy === 'cute' && img.keywords.includes('cute') ||
-             gFilterBy === 'puppy' && img.keywords.includes('puppy')
-      ) 
-    })
+  let filteredImgs = gImgs.filter((img) => {
+    return (
+      (gFilterBy === 'funny' && img.keywords.includes('funny')) ||
+      (gFilterBy === 'animal' && img.keywords.includes('animal')) ||
+      (gFilterBy === 'cute' && img.keywords.includes('cute')) ||
+      (gFilterBy === 'puppy' && img.keywords.includes('puppy'))
+    );
+  });
   return filteredImgs;
 }
 

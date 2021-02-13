@@ -12,32 +12,44 @@ function onInit() {
   gCtx = gElCanvas.getContext('2d');
 }
 
-function onSetFilter() {
-  var elFilterBy = document.querySelector('input[name=filterBy]');
-    var filterBy = elFilterBy.value;
-    console.log('Filtering by', filterBy);
-    setFilter(filterBy);
-    renderGallery();
-}
-
 function renderKeyList() {
-  let keyWords = getWords();
-  keyWords.unshift('all');
+  let keyWords = getKeyWords();
 
   let strHTML = keyWords.map(keyWord => {
-    return `<option value="${keyWord}">`
+    return `<option value="${keyWord.word}">`
   }).join('');
   document.querySelector('.keywords-input-list').innerHTML = strHTML;
 }
 
 function renderKeyWords() {
-  let words = getWords(); // Only the words
-  let keyWords = getKeyWords(); // the whole object
+  let keyWords = getKeyWords();
 
- let strHTML =  words.map(word => {
-    return `<li class="key-item" style="font-size:${keyWords.word};">${word}</li>`
+ let strHTML =  keyWords.map(keyWord => {
+    return `<li 
+              class="word-item" 
+              style="font-size:${keyWord.counted + 10}px;"
+              onclick="onSetFilterByWord(this)"
+              data-word="${keyWord.word}"
+              >${keyWord.word}</li>`
   }).join('')
-  document.querySelector('.keywords-list').innerHTML = strHTML;
+  document.querySelector('.keywords-words').innerHTML = strHTML;
+}
+
+function onSetFilterByList() {
+  var elFilterBy = document.querySelector('.keywords-list');
+  var filterBy = elFilterBy.value;
+  onSetFilter(filterBy);
+}
+
+function onSetFilterByWord(elFilterBy) {
+  var filterBy = elFilterBy.dataset.word;
+  onSetFilter(filterBy);
+}
+
+function onSetFilter(filterBy) {
+    console.log('Filtering by', filterBy);
+    setFilter(filterBy);
+    renderGallery();
 }
 
 function renderGallery() {
@@ -76,6 +88,7 @@ function hideGallery() {
 }
 
 function onShowGallery() {
+  onInit();
   showGallery();
   hideEditor();
   hideMemesPage();
