@@ -42,15 +42,17 @@
         <div
           class="filter-container main-container flex space-between align-center"
         >
-          <input type="search" list="keywords-list-options" placeholder="Enter search keyword    🔍" />
+          <input 
+            type="search" 
+            list="keywords-list-options" 
+            placeholder="Enter search keyword    🔍" 
+            value = "all"
+            onchange="onSetFilter()" 
+            name="filterBy"/>
 
           <datalist id="keywords-list-options" class="keywords-list">
-            <!-- <option value="Funny">
-            <option value="Cute">
-            <option value="Man">
-            <option value="Animal">
-            <option value="Puppy"> -->
           </datalist>
+
 
           <ul class="keywords-list clean-list flex space-between">
             <li class="key-item">Cute</li>

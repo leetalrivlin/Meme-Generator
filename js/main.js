@@ -5,17 +5,23 @@ var gCtx;
 var gTextBoxInterval;
 
 function onInit() {
-  onRenderGallery();
-  onRenderKeyList();
+  renderGallery();
+  renderKeyList();
   gElCanvas = document.getElementById('my-canvas');
   gCtx = gElCanvas.getContext('2d');
 }
 
+function onSetFilter() {
+  var elFilterBy = document.querySelector('input[name=filterBy]');
+    var filterBy = elFilterBy.value;
+    console.log('Filtering by', filterBy);
+    setFilter(filterBy);
+    renderGallery();
+}
 
-
-function onRenderKeyList() {
-  let keyWordList = getKeyList();
-  let keyWords = Object.getOwnPropertyNames(keyWordList).sort();
+function renderKeyList() {
+  let keyWords = getKeyWords();
+  keyWords.unshift('all');
 
   let strHTMLs = keyWords.map(keyWord => {
     return `<option value="${keyWord}">`
@@ -23,8 +29,8 @@ function onRenderKeyList() {
   document.querySelector('.keywords-list').innerHTML = strHTMLs;
 }
 
-function onRenderGallery() {
-  let imgs = gImgs;
+function renderGallery() {
+  let imgs = getImgByFilters();
   var strHtml = imgs
     .map((img) => {
       return `<img src="${img.url}" class="gallery-item item-${img.id}" onclick="onClickedImg(${img.id})"/>`;
