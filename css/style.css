@@ -114,10 +114,6 @@ body.words-close .keywords-words > *:nth-child(1n+4) {
   display: none;
 }
 
-/* .keywords-words > *:nth-child(1n+4) {
-  display: none;
-} */
-
 .img-gallery-container {
   width: 100%;
   background-color: #e3e3e3;

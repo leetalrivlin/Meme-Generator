@@ -1,13 +1,7 @@
 'use strict';
 
 var gFilterBy = 'all';
-var gKeywords = [
-  { word: 'all', counted: 5 },
-  { word: 'funny', counted: 25 },
-  { word: 'animal', counted: 7 },
-  { word: 'man', counted: 15 },
-  { word: 'puppy', counted: 10 },
-];
+var gKeywords;
 var gImgs = [
   { id: 1, url: 'img/gallery-imgs/1.jpg', keywords: ['funny', 'man'] },
   {
@@ -35,10 +29,28 @@ var gMeme;
 var gSavedMemes;
 const SAVED_KEY = 'saved-memes';
 
+createKeyWords();
 
-// function createKeyWords() {
+function createKeyWords() {
+  let words = [];
 
-// }
+  for (let i = 0; i < gImgs.length; i++) {
+    let currKeyWords = gImgs[i].keywords;
+    for (let j = 0; j < currKeyWords.length; j++) {
+      if (!words.includes(currKeyWords[j])) {
+        words.push(currKeyWords[j]);
+      }
+    }
+  }
+  console.log('words',words);
+  let keyWords = words.map(keyWord => {
+    return {word: keyWord, counted: getRandomIntInclusive(8, 28)}
+  })
+  keyWords.unshift({word: 'all', counted: 25});
+  console.log('keyWords',keyWords);
+  gKeywords = keyWords;
+  return gKeywords;
+}
 
 function getKeyWords() {
   return gKeywords;
@@ -58,7 +70,10 @@ function getImgByFilters() {
       (gFilterBy === 'animal' && img.keywords.includes('animal')) ||
       (gFilterBy === 'cute' && img.keywords.includes('cute')) ||
       (gFilterBy === 'puppy' && img.keywords.includes('puppy')) ||
-      (gFilterBy === 'man' && img.keywords.includes('man'))
+      (gFilterBy === 'man' && img.keywords.includes('man')) ||
+      (gFilterBy === 'baby' && img.keywords.includes('baby')) ||
+      (gFilterBy === 'great' && img.keywords.includes('great'))
+
     );
   });
   return filteredImgs;
@@ -156,4 +171,8 @@ function saveMemesToStorage() {
 function loadMemesFromStorage() {
   let savedMemes = loadFromStorage(SAVED_KEY);
   return savedMemes;
+}
+
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
