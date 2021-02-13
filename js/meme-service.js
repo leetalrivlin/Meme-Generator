@@ -3,10 +3,10 @@
 var gFilterBy = 'all';
 var gKeywords = [
   { word: 'all', counted: 5 },
-  { word: 'funny', counted: 12 },
+  { word: 'funny', counted: 25 },
   { word: 'animal', counted: 7 },
-  { word: 'cute', counted: 2 },
-  { word: 'puppy', counted: 5 },
+  { word: 'man', counted: 15 },
+  { word: 'puppy', counted: 10 },
 ];
 var gImgs = [
   { id: 1, url: 'img/gallery-imgs/1.jpg', keywords: ['funny', 'man'] },
@@ -35,6 +35,11 @@ var gMeme;
 var gSavedMemes;
 const SAVED_KEY = 'saved-memes';
 
+
+// function createKeyWords() {
+
+// }
+
 function getKeyWords() {
   return gKeywords;
 }
@@ -52,7 +57,8 @@ function getImgByFilters() {
       (gFilterBy === 'funny' && img.keywords.includes('funny')) ||
       (gFilterBy === 'animal' && img.keywords.includes('animal')) ||
       (gFilterBy === 'cute' && img.keywords.includes('cute')) ||
-      (gFilterBy === 'puppy' && img.keywords.includes('puppy'))
+      (gFilterBy === 'puppy' && img.keywords.includes('puppy')) ||
+      (gFilterBy === 'man' && img.keywords.includes('man'))
     );
   });
   return filteredImgs;

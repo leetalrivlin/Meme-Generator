@@ -10,7 +10,7 @@
   <body onload="onInit()">
     <header class="header-container">
       <div class="header-content main-container flex space-between align-center">
-        <a href="#"><img src="img/logo/LOGO.png" class="logo" onclick="onShowGallery()"/></a>
+        <img src="img/logo/LOGO.png" class="logo" onclick="onShowGallery()"/>
 
         <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
           ☰
@@ -53,9 +53,11 @@
           <datalist id="keywords-list-options" class="keywords-input-list">
           </datalist>
 
-
-          <ul class="keywords-words clean-list flex space-between">
-          </ul>
+          <div class="keywords-words-container flex">
+            <ul class="keywords-words clean-list flex space-between wrap">
+            </ul>
+            <span>...more</span>
+          </div>
         </div>
       </section>
 
@@ -177,12 +179,9 @@
           href=""
           download="my-img.jpg"
           onclick="onDownloadMeme(this)"
-          >Download to PC</a
+          >Download</a
         >
-        <button class="share-btn" onclick="onAddToMemes()">Save to Favorites</button>
-        <button class="share-btn">
-          Share on FB
-        </button>
+        <button class="share-btn" onclick="onAddToMemes()">Save to Memes</button>
       </div>
     </section>
 

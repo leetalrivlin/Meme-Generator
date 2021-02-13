@@ -47,7 +47,16 @@ function onSetFilterByWord(elFilterBy) {
 }
 
 function onSetFilter(filterBy) {
-    console.log('Filtering by', filterBy);
+    let keyWords = getKeyWords();
+
+    let keyword = keyWords.find( keyWord => {
+      return keyWord.word === filterBy;
+    });
+
+    if (keyword.counted < 30) {
+      keyword.counted++; 
+    }
+    renderKeyWords();
     setFilter(filterBy);
     renderGallery();
 }
@@ -361,8 +370,8 @@ function changeFontFamily(elSelect) {
 function onAddToMemes() {
   addToMemes();
   closeShareMenu();
-  let isGoToMemes = confirm('Your Meme was saved! Want to see it?');
-  if (isGoToMemes) showMemesPage();
+  // let isGoToMemes = confirm('Your Meme was saved! Want to see it?');
+  // if (isGoToMemes) showMemesPage();
 }
 
 function onDownloadMeme(elLink) {
