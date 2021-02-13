@@ -1,10 +1,11 @@
 'use strict';
+
 var gElCanvas;
 var gCtx;
-
 var gTextBoxInterval;
 
 function onInit() {
+  createKeyWords();
   renderGallery();
   renderKeyList();
   renderKeyWords();
@@ -12,26 +13,32 @@ function onInit() {
   gCtx = gElCanvas.getContext('2d');
 }
 
+// RENDER SECTION:
+
 function renderKeyList() {
   let keyWords = getKeyWords();
 
-  let strHTML = keyWords.map(keyWord => {
-    return `<option value="${keyWord.word}">`
-  }).join('');
+  let strHTML = keyWords
+    .map((keyWord) => {
+      return `<option value="${keyWord.word}">`;
+    })
+    .join('');
   document.querySelector('.keywords-input-list').innerHTML = strHTML;
 }
 
 function renderKeyWords() {
   let keyWords = getKeyWords();
 
- let strHTML =  keyWords.map(keyWord => {
-    return `<li 
+  let strHTML = keyWords
+    .map((keyWord) => {
+      return `<li 
               class="word-item" 
               style="font-size:${keyWord.counted + 10}px;"
               onclick="onSetFilterByWord(this)"
               data-word="${keyWord.word}"
-              >${keyWord.word}</li>`
-  }).join('')
+              >${keyWord.word}</li>`;
+    })
+    .join('');
   document.querySelector('.keywords-words').innerHTML = strHTML;
 }
 
@@ -47,18 +54,18 @@ function onSetFilterByWord(elFilterBy) {
 }
 
 function onSetFilter(filterBy) {
-    let keyWords = getKeyWords();
+  let keyWords = getKeyWords();
 
-    let keyword = keyWords.find( keyWord => {
-      return keyWord.word === filterBy;
-    });
+  let keyword = keyWords.find((keyWord) => {
+    return keyWord.word === filterBy;
+  });
 
-    if (keyword.counted < 30) {
-      keyword.counted++; 
-    }
-    renderKeyWords();
-    setFilter(filterBy);
-    renderGallery();
+  if (keyword.counted < 30) {
+    keyword.counted += 3;
+  }
+  renderKeyWords();
+  setFilter(filterBy);
+  renderGallery();
 }
 
 function renderGallery() {
@@ -79,7 +86,7 @@ function onClickedImg(imgId) {
   renderImg(imgId, callRenderText);
 }
 
-// DISPLAY / HIDE SECTIONS:
+// DISPLAY / HIDE SECTION:
 
 function hideEditor() {
   let elEditor = document.querySelector('.meme-editor-container');
@@ -136,7 +143,8 @@ function onInitMemes() {
       return `<img 
                 class="my-meme-img meme-${savedImg.id}" 
                 src="${savedImg.dataURL}" />`;
-    }).join('');
+    })
+    .join('');
 
   document.querySelector('.memes-grid').innerHTML = strHtml;
 }
@@ -144,9 +152,9 @@ function onInitMemes() {
 function showMemesPage() {
   onInitMemes();
   hideGallery();
-  hideEditor()
+  hideEditor();
   closeShareMenu();
-  
+
   document.querySelector('.memes-container').style.display = 'block';
 }
 
@@ -294,6 +302,9 @@ function onDeleteLine() {
   deleteLine(lineIdx);
 
   gMeme.selectedLineIdx = lineIdx + 1;
+  if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+    gMeme.selectedLineIdx = 0;
+  }
 
   let imgId = gMeme.selectedImgId;
   renderImg(imgId, callRenderText);
@@ -323,8 +334,9 @@ document.querySelector('.fill').addEventListener('click', function () {
 });
 
 function changeFillColor() {
+  let fillInput = document.querySelector('.fill-color-btn');
   let line = getLineFromId();
-  let fillColor = document.querySelector('.fill-color-btn').value;
+  let fillColor = fillInput.value;
 
   line.color = fillColor;
 
@@ -380,5 +392,7 @@ function onDownloadMeme(elLink) {
 
 function openMoreWords(elBtn) {
   document.body.classList.toggle('words-close');
-  elBtn.innerText = document.body.classList.contains('words-close') ? 'more...' : 'close...';
+  elBtn.innerText = document.body.classList.contains('words-close')
+    ? 'more...'
+    : 'close...';
 }

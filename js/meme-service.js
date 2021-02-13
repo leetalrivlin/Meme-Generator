@@ -3,33 +3,22 @@
 var gFilterBy = 'all';
 var gKeywords;
 var gImgs = [
-  { id: 1, url: 'img/gallery-imgs/1.jpg', keywords: ['funny', 'man'] },
-  {
-    id: 2,
-    url: 'img/gallery-imgs/2.jpg',
-    keywords: ['cute', 'puppy', 'animal'],
-  },
-  {
-    id: 3,
-    url: 'img/gallery-imgs/3.jpg',
-    keywords: ['cute', 'puppy', 'animal', 'baby'],
-  },
+  { id: 1, url: 'img/gallery-imgs/1.jpg', keywords: ['funny', 'man', 'politics'] },
+  { id: 2, url: 'img/gallery-imgs/2.jpg', keywords: ['cute', 'puppy', 'animal'] },
+  { id: 3, url: 'img/gallery-imgs/3.jpg', keywords: ['cute', 'puppy', 'animal', 'baby'] },
   { id: 4, url: 'img/gallery-imgs/4.jpg', keywords: ['cute', 'animal'] },
-  {
-    id: 5,
-    url: 'img/gallery-imgs/5.jpg',
-    keywords: ['funny', 'great', 'baby'],
-  },
+  { id: 5, url: 'img/gallery-imgs/5.jpg', keywords: ['funny', 'great', 'baby'] },
   { id: 6, url: 'img/gallery-imgs/6.jpg', keywords: ['funny', 'man'] },
   { id: 7, url: 'img/gallery-imgs/7.jpg', keywords: ['funny', 'baby'] },
   { id: 8, url: 'img/gallery-imgs/8.jpg', keywords: ['funny', 'man'] },
   { id: 9, url: 'img/gallery-imgs/9.jpg', keywords: ['funny', 'baby'] },
+  { id: 10, url: 'img/gallery-imgs/10.jpg', keywords: ['funny', 'man', 'politics'] },
+  { id: 11, url: 'img/gallery-imgs/11.jpg', keywords: ['man', 'sports'] },
+  { id: 12, url: 'img/gallery-imgs/12.jpg', keywords: ['man'] },
 ];
 var gMeme;
 var gSavedMemes;
 const SAVED_KEY = 'saved-memes';
-
-createKeyWords();
 
 function createKeyWords() {
   let words = [];
@@ -42,12 +31,12 @@ function createKeyWords() {
       }
     }
   }
-  console.log('words',words);
-  let keyWords = words.map(keyWord => {
-    return {word: keyWord, counted: getRandomIntInclusive(8, 28)}
-  })
-  keyWords.unshift({word: 'all', counted: 25});
-  console.log('keyWords',keyWords);
+
+  let keyWords = words.map((keyWord) => {
+    return { word: keyWord, counted: getRandomIntInclusive(8, 28) };
+  });
+  keyWords.unshift({ word: 'all', counted: 25 });
+
   gKeywords = keyWords;
   return gKeywords;
 }
@@ -61,7 +50,6 @@ function setFilter(filterBy) {
 }
 
 function getImgByFilters() {
-  // let keyWords = getKeyWords();
   if (gFilterBy === 'all' || gFilterBy === '') return gImgs;
 
   let filteredImgs = gImgs.filter((img) => {
@@ -72,10 +60,12 @@ function getImgByFilters() {
       (gFilterBy === 'puppy' && img.keywords.includes('puppy')) ||
       (gFilterBy === 'man' && img.keywords.includes('man')) ||
       (gFilterBy === 'baby' && img.keywords.includes('baby')) ||
-      (gFilterBy === 'great' && img.keywords.includes('great'))
-
+      (gFilterBy === 'great' && img.keywords.includes('great')) ||
+      (gFilterBy === 'politics' && img.keywords.includes('politics')) ||
+      (gFilterBy === 'sports' && img.keywords.includes('sports'))
     );
   });
+
   return filteredImgs;
 }
 
@@ -85,7 +75,7 @@ function createMeme(imgId) {
     selectedLineIdx: 0,
     lines: [
       {
-        txt: 'I love Falafel',
+        txt: 'Change me!',
         size: 40,
         fontFamily: 'Impact',
         align: 'center',
@@ -96,7 +86,7 @@ function createMeme(imgId) {
         textWidth: 0,
       },
       {
-        txt: 'Second line',
+        txt: 'Hey! Change me too',
         size: 40,
         fontFamily: 'Impact',
         align: 'center',

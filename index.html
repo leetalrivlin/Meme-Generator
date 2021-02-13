@@ -83,24 +83,30 @@
             onkeyup="onGetInputVal()"
           />
           <div class="txt-btns">
+
             <button class="editor-btn" onclick="swichLine()">
               <img
                 class="btn-icon"
                 src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"
               />
             </button>
+
             <button class="Text-move-down editor-btn" onclick="moveLineDown()">
               <img class="btn-icon" src="img/icons/arrow down.png" />
             </button>
+
             <button class="Text-move-up editor-btn" onclick="moveLineUp()">
               <img class="btn-icon" src="img/icons/arrow up.png" />
             </button>
+
             <button class="editor-btn" onclick="onAddLine()">
               <img class="btn-icon" src="img/icons/add.png" />
             </button>
+
             <button class="editor-btn" onclick="onDeleteLine()">
               <img class="btn-icon" src="img/icons/trash.png" />
             </button>
+
           </div>
         </div>
 
@@ -189,21 +195,21 @@
 
       <h2>Your Favorite Memes</h2>
 
-      <p class="no-memes">There are no saved memes yet! Go to <a href="#" onclick="onShowGallery()">Gallery</a> to create your meme</p>
+      <p 
+      class="no-memes">There are no saved memes yet! Go to 
+      <a href="#" onclick="onShowGallery()">Gallery</a> 
+      to create your meme</p>
 
       <div class="memes-grid"></div>
 
     </section>
 
-    <footer
-      class="footer-container flex flex-column justify-center align-center"
-    >
+    <footer class="footer-container flex flex-column justify-center align-center">
       <img src="img/logo/LOGO.png" class="logo" />
       <p>All rights reserved 2021</p>
     </footer>
 
     <script src="js/storage-service.js"></script>
-    <script src="js/upload-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
   </body>
