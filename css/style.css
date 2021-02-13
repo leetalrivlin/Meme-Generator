@@ -81,12 +81,12 @@ a:hover {
 
 .filter-section {
   width: 100%;
-  min-height: 120px;
+  min-height: 60px;
   background-color: #ffffff;
 }
 
 .filter-container {
-  line-height: 120px;
+  line-height: 60px;
 }
 
 .filter-container input {
@@ -110,9 +110,13 @@ a:hover {
   color:  #ff7f00;
 }
 
-.keywords-words .word-item:nth-child(n+4) {
+body.words-close .keywords-words > *:nth-child(1n+4) {
   display: none;
 }
+
+/* .keywords-words > *:nth-child(1n+4) {
+  display: none;
+} */
 
 .img-gallery-container {
   width: 100%;
@@ -398,6 +402,11 @@ body.btn-menu-open .main-share-btn {
 @media (max-width: 630px) {
   .main-container {
     max-width: 550px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    line-height: 60px;
   }
 }
 

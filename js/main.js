@@ -370,12 +370,15 @@ function changeFontFamily(elSelect) {
 function onAddToMemes() {
   addToMemes();
   closeShareMenu();
-  // let isGoToMemes = confirm('Your Meme was saved! Want to see it?');
-  // if (isGoToMemes) showMemesPage();
 }
 
 function onDownloadMeme(elLink) {
   var imgContent = gElCanvas.toDataURL('image/jpeg');
   elLink.href = imgContent;
   closeShareMenu();
+}
+
+function openMoreWords(elBtn) {
+  document.body.classList.toggle('words-close');
+  elBtn.innerText = document.body.classList.contains('words-close') ? 'more...' : 'close...';
 }
