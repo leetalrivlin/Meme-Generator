@@ -29,8 +29,11 @@ var gMeme;
 var gSavedMemes;
 const SAVED_KEY = 'saved-memes';
 
-
 function getKeyWords() {
+  return gKeywords;
+}
+
+function getWords() {
   let keyWords = Object.getOwnPropertyNames(gKeywords).sort();
   return keyWords;
 }
