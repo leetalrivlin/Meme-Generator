@@ -98,6 +98,11 @@ function hideGallery() {
   elGallery.style.display = 'none';
 }
 
+function showGallery() {
+  let elGallery = document.querySelector('.img-gallery-container');
+  elGallery.style.display = 'block';
+}
+
 function onShowGallery() {
   onInit();
   showGallery();
@@ -105,13 +110,15 @@ function onShowGallery() {
   hideMemesPage();
 }
 
-function showGallery() {
-  let elGallery = document.querySelector('.img-gallery-container');
-  elGallery.style.display = 'block';
+function onNavItemClick(elNavItem) {
+  toggleMenu();
+  if (elNavItem.dataset.item === 'gallery') onShowGallery();
+  if (elNavItem.dataset.item === 'memes') showMemesPage(); 
 }
 
-function toggleMenu(elBtn) {
+function toggleMenu() {
   document.body.classList.toggle('menu-open');
+  const elBtn = document.querySelector('.hamburger-btn')
   elBtn.innerText = document.body.classList.contains('menu-open') ? 'X' : '☰';
 }
 

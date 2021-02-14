@@ -17,12 +17,12 @@
         <div class="header-content main-container flex space-between align-center">
             <img src="img/logo/LOGO.png" class="logo" onclick="onShowGallery()" />
 
-            <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
+            <button class="hamburger-btn clean-button" onclick="toggleMenu()">
           ☰
         </button>
             <ul class="main-nav clean-list flex">
                 <li>
-                    <a href="#" class="nav-item flex justify-center" onclick="onShowGallery()">Gallery</a
+                    <a href="#" class="nav-item flex justify-center" data-item="gallery" onclick="onNavItemClick(this)">Gallery</a
             >
           </li>
           <p class="nav-line flex justify-center align-center">|</p>
@@ -30,7 +30,8 @@
             <a
               href="#"
               class="nav-item flex justify-center"
-              onclick="showMemesPage()"
+              data-item="memes"
+              onclick="onNavItemClick(this)"
               >Memes</a>
                 </li>
             </ul>
