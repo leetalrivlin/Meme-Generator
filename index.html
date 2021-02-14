@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/style.css" />
-  </head>
+</head>
 
-  <body onload="onInit()" class="words-close">
-    <header class="header-container">
-      <div class="header-content main-container flex space-between align-center">
-        <img src="img/logo/LOGO.png" class="logo" onclick="onShowGallery()"/>
+<body onload="onInit()" class="words-close">
+  <datalist id="keywords-list-options" class="keywords-input-list">
+  </datalist>
 
-        <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
+    <header class="header-container flex">
+        <div class="header-content main-container flex space-between align-center">
+            <img src="img/logo/LOGO.png" class="logo" onclick="onShowGallery()" />
+
+            <button class="hamburger-btn clean-button" onclick="toggleMenu(this)">
           ☰
         </button>
-
-        <ul class="main-nav clean-list flex">
-          <li>
-            <a
-              href="#"
-              class="nav-item flex justify-center"
-              onclick="onShowGallery()"
-              >Gallery</a
+            <ul class="main-nav clean-list flex">
+                <li>
+                    <a href="#" class="nav-item flex justify-center" onclick="onShowGallery()">Gallery</a
             >
           </li>
           <p class="nav-line flex justify-center align-center">|</p>
@@ -32,119 +31,90 @@
               class="nav-item flex justify-center"
               onclick="showMemesPage()"
               >Memes</a>
-          </li>
-        </ul>
-      </div>
+                </li>
+            </ul>
+        </div>
     </header>
 
     <section id="img-gallery" class="img-gallery-container">
-      <section class="filter-section">
-        <div
-          class="filter-container main-container flex space-between align-center"
-        >
-          <input 
-            type="search" 
-            class="keywords-list"
-            list="keywords-list-options" 
-            placeholder="Enter search keyword    🔍" 
-            onchange="onSetFilterByList()" 
-          />
+        <section class="filter-section">
+            <div class="filter-container main-container flex space-between align-center">
+                <input type="search" class="keywords-list" list="keywords-list-options" placeholder="Enter search keyword    🔍" onchange="onSetFilterByList()" />
 
-          <datalist id="keywords-list-options" class="keywords-input-list">
-          </datalist>
+                
 
-          <div class="keywords-words-container flex">
-            <ul class="keywords-words clean-list flex space-between wrap">
-            </ul>
-            <span onclick="openMoreWords(this)">more...</span>
-          </div>
-        </div>
-      </section>
+                <div class="keywords-words-container flex">
+                    <ul class="keywords-words clean-list flex space-between wrap">
+                    </ul>
+                    <span onclick="openMoreWords(this)">more...</span>
+                </div>
+            </div>
+        </section>
 
-      <div class="img-gallery main-container"></div>
+        <div class="img-gallery main-container"></div>
     </section>
 
     <section class="meme-editor-container main-container">
-      <div class="canvas-container">
-        <canvas
-          id="my-canvas"
-          width="400"
-          height="400"
-          style="outline: 1px solid rgb(0, 0, 0)"
-        ></canvas>
-      </div>
+        <div class="canvas-container">
+            <canvas id="my-canvas" width="400" height="400" style="outline: 1px solid rgb(0, 0, 0)"></canvas>
+        </div>
 
-      <section class="editor flex flex-column space-between align-center">
-        <div class="control-box flex flex-column">
-          <input
-            type="text"
-            class="txt-input"
-            placeholder="Enter text"
-            onkeyup="onGetInputVal()"
-          />
-          <div class="txt-btns">
+        <section class="editor flex flex-column space-between align-center">
+            <div class="control-box flex flex-column">
+                <input type="text" class="txt-input" placeholder="Enter text" onkeyup="onGetInputVal()" />
+                <div class="txt-btns">
 
-            <button class="editor-btn" onclick="swichLine()">
+                    <button class="editor-btn" onclick="swichLine()">
               <img
                 class="btn-icon"
                 src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"
               />
             </button>
 
-            <button class="Text-move-down editor-btn" onclick="moveLineDown()">
+                    <button class="Text-move-down editor-btn" onclick="moveLineDown()">
               <img class="btn-icon" src="img/icons/arrow down.png" />
             </button>
 
-            <button class="Text-move-up editor-btn" onclick="moveLineUp()">
+                    <button class="Text-move-up editor-btn" onclick="moveLineUp()">
               <img class="btn-icon" src="img/icons/arrow up.png" />
             </button>
 
-            <button class="editor-btn" onclick="onAddLine()">
+                    <button class="editor-btn" onclick="onAddLine()">
               <img class="btn-icon" src="img/icons/add.png" />
             </button>
 
-            <button class="editor-btn" onclick="onDeleteLine()">
+                    <button class="editor-btn" onclick="onDeleteLine()">
               <img class="btn-icon" src="img/icons/trash.png" />
             </button>
 
-          </div>
-        </div>
+                </div>
+            </div>
 
-        <div class="advanced-edit flex flex-column">
-          <div class="txt-btns flex justify-center">
-            <button class="increase-font editor-btn" onclick="increaseFont()">
+            <div class="advanced-edit flex flex-column">
+                <div class="txt-btns flex justify-center">
+                    <button class="increase-font editor-btn" onclick="increaseFont()">
               <img class="btn-icon" src="img/icons/increase font - icon.png" />
             </button>
-            <button class="decrease-font editor-btn" onclick="decreaseFont()">
+                    <button class="decrease-font editor-btn" onclick="decreaseFont()">
               <img class="btn-icon" src="img/icons/decrease font - icon.png" />
             </button>
-            <button class="align-left-btn editor-btn" onclick="alignText(this)">
+                    <button class="align-left-btn editor-btn" onclick="alignText(this)">
               <img class="btn-icon" src="img/icons/align-to-left.png" />
             </button>
-            <button
-              class="align-center-btn editor-btn"
-              onclick="alignText(this)"
-            >
+                    <button class="align-center-btn editor-btn" onclick="alignText(this)">
               <img class="btn-icon" src="img/icons/center-text-alignment.png" />
             </button>
-            <button
-              class="align-right-btn editor-btn"
-              onclick="alignText(this)"
-            >
+                    <button class="align-right-btn editor-btn" onclick="alignText(this)">
               <img class="btn-icon" src="img/icons/align-to-right.png" />
             </button>
-          </div>
-          <div class="txt-btns flex justify-center">
-            <select
-              class="input-font-family"
-              name=""
-              onchange="changeFontFamily(this)"
-            >
+                </div>
+                <div class="txt-btns flex justify-center">
+                    <select class="input-font-family" name="" onchange="changeFontFamily(this)">
               <option value="impact">Impact</option>
               <option value="Arial">Arial</option>
               <option value="Verdana">Verdana</option>
             </select>
-            <button class="editor-btn stroke">
+                    <button class="editor-btn stroke">
               <img class="btn-icon" src="img/icons/text stroke.png" />
               <input
                 class="stroke-color-btn"
@@ -152,7 +122,7 @@
                 onchange="changeStrokeColor()"
               />
             </button>
-            <button class="editor-btn fill">
+                    <button class="editor-btn fill">
               <img
                 class="btn-icon"
                 src="img/icons/paint-board-and-brush.png" />
@@ -163,29 +133,24 @@
                 onchange="changeFillColor()"
               />
             </button>
-          </div>
-        </div>
+                </div>
+            </div>
 
-        <div class="accessories-picker flex justify-center">
-          <div class="txt-btns">
-            <img src="" alt="" />
-            <img src="" alt="" />
-          </div>
-        </div>
+            <div class="accessories-picker flex justify-center">
+                <div class="txt-btns">
+                    <img src="" alt="" />
+                    <img src="" alt="" />
+                </div>
+            </div>
 
-        <button class="main-share-btn share-btn" onclick="toggleShareMenu()">
+            <button class="main-share-btn share-btn" onclick="toggleShareMenu()">
           Share
         </button>
-      </section>
+        </section>
 
-      <div class="share-btns-container">
-        <button class="x-btn clean-button" onclick="closeShareMenu()">X</button>
-        <a
-          class="share-btn flex align-center justify-center"
-          href=""
-          download="my-img.jpg"
-          onclick="onDownloadMeme(this)"
-          >Download</a
+        <div class="share-btns-container">
+            <button class="x-btn clean-button" onclick="closeShareMenu()">X</button>
+            <a class="share-btn flex align-center justify-center" href="" download="my-img.jpg" onclick="onDownloadMeme(this)">Download</a
         >
         <button class="share-btn" onclick="onAddToMemes()">Save to Memes</button>
       </div>
@@ -195,22 +160,23 @@
 
       <h2>Your Favorite Memes</h2>
 
-      <p 
-      class="no-memes">There are no saved memes yet! Go to 
-      <a href="#" onclick="onShowGallery()">Gallery</a> 
-      to create your meme</p>
+      <p class="no-memes"> 
+        There are no saved memes yet! Go to 
+        <a href="#" onclick="onShowGallery()"> Gallery </a> to create your meme
+            </p>
 
-      <div class="memes-grid"></div>
+            <div class="memes-grid"></div>
 
     </section>
 
     <footer class="footer-container flex flex-column justify-center align-center">
-      <img src="img/logo/LOGO.png" class="logo" />
-      <p>All rights reserved 2021</p>
+        <img src="img/logo/LOGO.png" class="logo" />
+        <p>All rights reserved 2021</p>
     </footer>
 
     <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
-  </body>
+</body>
+
 </html>

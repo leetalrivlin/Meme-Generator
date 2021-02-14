@@ -45,32 +45,33 @@ function getKeyWords() {
   return gKeywords;
 }
 
+function getCurrMeme() {
+  return gMeme;
+}
+
+function getCurrLine() {
+  let lineId = gMeme.selectedLineIdx;
+  let line = gMeme.lines[lineId];
+  return line;
+}
+
+function getImgById(imgId) {
+  return gImgs.find( img => {
+    return img.id === imgId;
+  });
+}
+
 function setFilter(filterBy) {
   gFilterBy = filterBy;
 }
 
 function getImgByFilters() {
   if (gFilterBy === 'all' || gFilterBy === '') return gImgs;
-
-  let filteredImgs = gImgs.filter((img) => {
-    return (
-      (gFilterBy === 'funny' && img.keywords.includes('funny')) ||
-      (gFilterBy === 'animal' && img.keywords.includes('animal')) ||
-      (gFilterBy === 'cute' && img.keywords.includes('cute')) ||
-      (gFilterBy === 'puppy' && img.keywords.includes('puppy')) ||
-      (gFilterBy === 'man' && img.keywords.includes('man')) ||
-      (gFilterBy === 'baby' && img.keywords.includes('baby')) ||
-      (gFilterBy === 'great' && img.keywords.includes('great')) ||
-      (gFilterBy === 'politics' && img.keywords.includes('politics')) ||
-      (gFilterBy === 'sports' && img.keywords.includes('sports'))
-    );
-  });
-
-  return filteredImgs;
+  return gImgs.filter((img) => img.keywords.includes(gFilterBy))
 }
 
 function createMeme(imgId) {
-  var gMeme = {
+  gMeme = {
     selectedImgId: imgId,
     selectedLineIdx: 0,
     lines: [
@@ -82,7 +83,7 @@ function createMeme(imgId) {
         color: 'red',
         stroke: 'black',
         x: gElCanvas.width / 2,
-        y: 50,
+        y: 60,
         textWidth: 0,
       },
       {
@@ -93,7 +94,7 @@ function createMeme(imgId) {
         color: 'white',
         stroke: 'black',
         x: gElCanvas.width / 2,
-        y: gElCanvas.height - 50,
+        y: gElCanvas.height - 40,
         textWidth: 0,
       },
     ],
@@ -106,16 +107,8 @@ function updateMemeLineTxt(txt, lineIdx) {
   return gMeme;
 }
 
-function getLineFromId() {
-  let lineId = gMeme.selectedLineIdx;
-  let line = gMeme.lines[lineId];
-
-  return line;
-}
-
 function deleteLine(lineId) {
   gMeme.lines.splice(lineId, 1);
-
   return gMeme;
 }
 

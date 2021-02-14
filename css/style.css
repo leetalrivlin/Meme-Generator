@@ -56,6 +56,10 @@ a:hover {
   background-color: #ff7f00;
 }
 
+.header-content {
+  width: 100%;
+}
+
 .header-container .logo {
   width: 133px;
   cursor: pointer;
@@ -93,10 +97,21 @@ a:hover {
 
 .filter-container input {
   min-width: 230px;
+  align-self: flex-start;
+  margin-top: 15px;
   border: none;
   border-bottom: 1px solid #040a2c;
   padding: 5px 10px;
   outline: none;
+  transition: border-color .3s;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.filter-container input:focus {
+  border-color:#FF7F00;
 }
 
 .keywords-words .word-item {
