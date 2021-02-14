@@ -148,7 +148,7 @@ body.words-close .keywords-words > *:nth-child(1n+4) {
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: 300px;
-  gap: 10px;
+  gap: 25px;
 }
 
 .img-gallery .gallery-item {
@@ -361,7 +361,6 @@ body.btn-menu-open .main-share-btn {
   .img-gallery {
     grid-template-columns: repeat(auto-fit, 250px);
     grid-auto-rows: 250px;
-    gap: 10px;
   }
 }
 
@@ -369,6 +368,11 @@ body.btn-menu-open .main-share-btn {
 @media (max-width: 840px) {
   .main-container {
     max-width: 700px;
+  }
+
+  .img-gallery {
+    grid-template-columns: repeat(auto-fit, 215px);
+    grid-auto-rows: 215px;
   }
 
   .meme-editor-container {
@@ -417,6 +421,12 @@ body.btn-menu-open .main-share-btn {
   .main-container {
     max-width: 600px;
   }
+
+  .img-gallery {
+    grid-template-columns: repeat(auto-fit, 180px);
+    grid-auto-rows: 180px;
+    gap: 30px;
+  }
 }
 
 @media (max-width: 630px) {
@@ -427,6 +437,16 @@ body.btn-menu-open .main-share-btn {
   .filter-container {
     flex-direction: column;
     line-height: 60px;
+  }
+
+  .filter-container .keywords-list {
+    align-self: center;
+  }
+
+  .img-gallery {
+    grid-template-columns: repeat(auto-fit, 175px);
+    grid-auto-rows: 175px;
+    gap: 12px;
   }
 }
 
@@ -480,6 +500,10 @@ body.btn-menu-open .main-share-btn {
     flex-direction: column;
     line-height: 60px;
   }
+
+  /* .filter-container .keywords-list {
+    align-self: center;
+  } */
 
   .keywords-words .word-item {
     margin: 5px 0 5px 5px;
