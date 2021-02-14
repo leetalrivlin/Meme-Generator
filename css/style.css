@@ -212,6 +212,10 @@ body.words-close .keywords-words > *:nth-child(1n+4) {
   display: none;
 }
 
+.main-share-btn {
+  margin-top: 20px;
+}
+
 .share-btn {
   width: 120px;
   height: 50px;
@@ -260,6 +264,25 @@ body.btn-menu-open .share-btns-container {
 
 body.btn-menu-open .main-share-btn {
   color: #040a2c;
+}
+
+.main-screen {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(0 0 0 / 30%);
+  cursor: pointer;
+
+  transition: opacity .6s;
+}
+
+body.btn-menu-open .main-screen {
+  opacity: 1;
+  visibility: visible;
 }
 
 .memes-container {

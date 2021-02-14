@@ -76,7 +76,6 @@ function renderGallery() {
 function onClickedImg(imgId) {
   hideGallery();
   showEditor();
-
   createMeme(imgId);
   renderImg(imgId, callRenderLine);
 }
@@ -111,7 +110,7 @@ function onShowGallery() {
 }
 
 function onNavItemClick(elNavItem) {
-  toggleMenu();
+  if (document.body.classList.contains('menu-open')) toggleMenu();
   if (elNavItem.dataset.item === 'gallery') onShowGallery();
   if (elNavItem.dataset.item === 'memes') showMemesPage(); 
 }
