@@ -9,6 +9,7 @@
 </head>
 
 <body onload="onInit()" class="words-close">
+
   <datalist id="keywords-list-options" class="keywords-input-list">
   </datalist>
 
@@ -36,7 +37,7 @@
         </div>
     </header>
 
-    <section id="img-gallery" class="img-gallery-container">
+    <section id="img-gallery" class="img-gallery-container main">
         <section class="filter-section">
             <div class="filter-container main-container flex space-between align-center">
                 <input type="search" class="keywords-list" list="keywords-list-options" placeholder="Enter search keyword    🔍" onchange="onSetFilterByList()" />
@@ -54,7 +55,7 @@
         <div class="img-gallery main-container"></div>
     </section>
 
-    <section class="meme-editor-container main-container">
+    <section class="meme-editor-container main-container main">
         <div class="canvas-container">
             <canvas id="my-canvas" width="400" height="400" style="outline: 1px solid rgb(0, 0, 0)"></canvas>
         </div>
@@ -71,11 +72,11 @@
               />
             </button>
 
-                    <button class="Text-move-down editor-btn" onclick="moveLineDown()">
+                    <button class="Text-move-down editor-btn" onclick="onMoveLine(5)">
               <img class="btn-icon" src="img/icons/arrow down.png" />
             </button>
 
-                    <button class="Text-move-up editor-btn" onclick="moveLineUp()">
+                    <button class="Text-move-up editor-btn" onclick="onMoveLine(-5)">
               <img class="btn-icon" src="img/icons/arrow up.png" />
             </button>
 
@@ -156,7 +157,7 @@
       </div>
     </section>
 
-    <section id="memes" class="memes-container main-container">
+    <section id="memes" class="memes-container main-container main">
 
       <h2>Your Favorite Memes</h2>
 

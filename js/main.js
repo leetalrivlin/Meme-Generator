@@ -231,8 +231,9 @@ function renderLineFocus() {
 
 function onGetInputVal() {
   const elInput = document.querySelector('.txt-input').value;
-  const lineIdx = gMeme.selectedLineIdx;
-  const meme = updateMemeLineTxt(elInput, lineIdx);
+  let meme = getCurrMeme();
+  const lineIdx = meme.selectedLineIdx;
+  meme = updateMemeLineTxt(elInput, lineIdx);
 
   let imgId = meme.selectedImgId;
   renderImg(imgId, callRenderLine);
@@ -246,8 +247,8 @@ function increaseFont() {
   if (line.size > 60) return;
   line.size += 5;
 
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function decreaseFont() {
@@ -256,55 +257,36 @@ function decreaseFont() {
   if (line.size < 20) return;
   line.size -= 5;
 
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
-}
-
-function moveLineDown() {
-  const line = getCurrLine();
-
-  if (line.y >= gElCanvas.height) return;
-  line.y += 5;
-
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function onMoveLine(diff) {
   const line = getCurrLine();
   if (line.y >= gElCanvas.height || line.y - line.size <= 0) return;
   line.y += diff;
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
-}
 
-function moveLineUp() {
-  let line = getCurrLine();
-
-  if (line.y - line.size <= 0) return;
-  line.y -= 5;
-
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function onAddLine() {
   let newLine = createnewLine();
   addMemeLine(newLine);
-  gMeme.selectedLineIdx = gMeme.lines.length - 1;
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function onDeleteLine() {
-  let lineIdx = gMeme.selectedLineIdx;
+  const meme = getCurrMeme();
+  let lineIdx = meme.selectedLineIdx;
   deleteLine(lineIdx);
-  gMeme.selectedLineIdx = lineIdx + 1;
-  if (gMeme.selectedLineIdx >= gMeme.lines.length) {
-    gMeme.selectedLineIdx = 0;
+  meme.selectedLineIdx = lineIdx + 1;
+  if (meme.selectedLineIdx >= meme.lines.length) {
+    meme.selectedLineIdx = 0;
   }
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 document.querySelector('.stroke').addEventListener('click', function () {
@@ -320,8 +302,8 @@ function changeStrokeColor() {
 
   line.stroke = strokeColor;
 
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 document.querySelector('.fill').addEventListener('click', function () {
@@ -337,8 +319,8 @@ function changeFillColor() {
 
   line.color = fillColor;
 
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function alignText(elBtn) {
@@ -360,16 +342,16 @@ function alignText(elBtn) {
       line.align = 'right';
       break;
   }
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function changeFontFamily(elSelect) {
   let line = getCurrLine();
   let fontFamily = elSelect.value;
   line.fontFamily = fontFamily;
-  let imgId = gMeme.selectedImgId;
-  renderImg(imgId, callRenderLine);
+  let {selectedImgId} = getCurrMeme();
+  renderImg(selectedImgId, callRenderLine);
 }
 
 function onAddToMemes() {

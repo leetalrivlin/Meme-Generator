@@ -127,6 +127,7 @@ function createnewLine() {
 
 function addMemeLine(addedLine) {
   gMeme.lines.push(addedLine);
+  gMeme.selectedLineIdx = gMeme.lines.length - 1;
   return gMeme;
 }
 
