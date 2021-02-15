@@ -193,8 +193,7 @@ function onDeleteMeme(currId) {
 
 function onEditMeme(currId) {
   console.log('Im editing');
-  hideMemesPage();
-  showEditor();
+
   let savedMemes = loadMemesFromStorage();
   let meme = savedMemes.find(meme => {
     return currId === meme.memeId;
@@ -202,6 +201,9 @@ function onEditMeme(currId) {
   updateMeme(meme);
   let imgId = meme.selectedImgId;
   renderImg(imgId, callRenderLine);
+
+  hideMemesPage();
+  showEditor();
 }
 
 // CANVAS OPERATIONS:
