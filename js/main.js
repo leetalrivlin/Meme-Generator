@@ -153,10 +153,10 @@ function renderMemes(savedMemes) {
                 class="my-meme-img" 
                 src="${savedImg.dataURL}" />
               <button class="img-btn clean-button" onclick="onDeleteMeme('${savedImg.memeId}')">
-                <img src="../img/icons/trash.png" class="img-btn-icon"/>
+                <img src="img/icons/trash.png" class="img-btn-icon"/>
               </button>
               <button class="img-btn clean-button" onclick="onEditMeme('${savedImg.memeId}')">
-                <img src="../img/icons/edit.png" class="img-btn-icon"/>
+                <img src="img/icons/edit.png" class="img-btn-icon"/>
               </button>
             </div>`;
   })
