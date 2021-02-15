@@ -72,10 +72,10 @@ function getImgByFilters() {
 
 function createMeme(imgId) {
   gMeme = {
-    memeId: getRandomId(),  ///////////////// added this
+    memeId: getRandomId(),
     selectedImgId: imgId,
     selectedLineIdx: 0,
-    dataURL: '', ///////////////// added this
+    dataURL: '',
     lines: [
       {
         txt: 'Change me!',
@@ -133,6 +133,10 @@ function addMemeLine(addedLine) {
   return gMeme;
 }
 
+function updateMeme(meme) {
+  gMeme = meme;
+  return gMeme;
+}
 // function addToMemes() {
 //   let savedMemes = loadMemesFromStorage();
 //   if (!savedMemes || !savedMemes.length) {

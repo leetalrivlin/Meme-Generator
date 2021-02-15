@@ -184,11 +184,30 @@ function onDeleteMeme(currId) {
   onRenderMemes();
 }
 
-function onEditMeme(id) {
+function onEditMeme(currId) {
   console.log('Im editing');
+  hideMemesPage();
+  showEditor();
+  let savedMemes = loadMemesFromStorage();
+  let meme = savedMemes.find(meme => {
+    return currId === meme.memeId;
+  });
+  updateMeme(meme);
+  let imgId = meme.selectedImgId;
+  renderImg(imgId, callRenderLine);
 }
 
 // CANVAS OPERATIONS:
+
+function renderImg(imgId, myCallBack) {
+  let imgFromDb = getImgById(imgId);
+  const img = new Image();
+  img.src = imgFromDb.url;
+  img.onload = () => {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+    myCallBack();
+  };
+}
 
 function callRenderLine() {
   let {lines} = getCurrMeme();
@@ -200,16 +219,6 @@ function callRenderLine() {
   lines.forEach((line) => {
     renderLine(line);
   });
-}
-
-function renderImg(imgId, myCallBack) {
-  let imgFromDb = getImgById(imgId);
-  const img = new Image();
-  img.src = imgFromDb.url;
-  img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    myCallBack();
-  };
 }
 
 function renderLine(line) {
