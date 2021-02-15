@@ -3,6 +3,7 @@
 var gElCanvas;
 var gCtx;
 var gTextBoxInterval;
+var gsavedInterval;
 
 function onInit() {
   createKeyWords();
@@ -151,8 +152,12 @@ function renderMemes(savedMemes) {
               <img 
                 class="my-meme-img" 
                 src="${savedImg.dataURL}" />
-              <button onclick="onDeleteMeme('${savedImg.memeId}')">Delete</button>
-              <button onclick="onEditMeme('${savedImg.memeId}')">Edit</button>
+              <button class="img-btn clean-button" onclick="onDeleteMeme('${savedImg.memeId}')">
+                <img src="../img/icons/trash.png" class="img-btn-icon"/>
+              </button>
+              <button class="img-btn clean-button" onclick="onEditMeme('${savedImg.memeId}')">
+                <img src="../img/icons/edit.png" class="img-btn-icon"/>
+              </button>
             </div>`;
   })
   .join('');
@@ -179,6 +184,8 @@ function onDeleteMeme(currId) {
   let idx = savedMemes.findIndex(meme => {
     return currId === meme.memeId;
   });
+  let isDelete = confirm('Are you sure you want to delete?');
+  if (!isDelete) return;
   savedMemes.splice(idx, 1);
   updateSavedMemes(savedMemes);
   onRenderMemes();
@@ -396,7 +403,7 @@ function changeFontFamily(elSelect) {
 
 function onAddToMemes() {
   addToMemes();
-  closeShareMenu();
+  gsavedInterval = setTimeout(closeShareMenu, 500); 
 }
 
 function onDownloadMeme(elLink) {

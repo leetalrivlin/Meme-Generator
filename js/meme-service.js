@@ -137,22 +137,6 @@ function updateMeme(meme) {
   gMeme = meme;
   return gMeme;
 }
-// function addToMemes() {
-//   let savedMemes = loadMemesFromStorage();
-//   if (!savedMemes || !savedMemes.length) {
-//     savedMemes = [];
-//   }
-//   let memeDataUrl = gElCanvas.toDataURL();
-
-//   let savedMeme = {
-//     id: savedMemes.length + 1,
-//     dataURL: memeDataUrl,
-//   };
-
-//   savedMemes.push(savedMeme);
-//   gSavedMemes = savedMemes;
-//   saveMemesToStorage();
-// }
 
 function addToMemes() {
   let savedMemes = loadMemesFromStorage();
