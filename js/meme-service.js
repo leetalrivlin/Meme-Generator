@@ -72,8 +72,10 @@ function getImgByFilters() {
 
 function createMeme(imgId) {
   gMeme = {
+    memeId: getRandomId(),  ///////////////// added this
     selectedImgId: imgId,
     selectedLineIdx: 0,
+    dataURL: '', ///////////////// added this
     lines: [
       {
         txt: 'Change me!',
@@ -131,19 +133,38 @@ function addMemeLine(addedLine) {
   return gMeme;
 }
 
+// function addToMemes() {
+//   let savedMemes = loadMemesFromStorage();
+//   if (!savedMemes || !savedMemes.length) {
+//     savedMemes = [];
+//   }
+//   let memeDataUrl = gElCanvas.toDataURL();
+
+//   let savedMeme = {
+//     id: savedMemes.length + 1,
+//     dataURL: memeDataUrl,
+//   };
+
+//   savedMemes.push(savedMeme);
+//   gSavedMemes = savedMemes;
+//   saveMemesToStorage();
+// }
+
 function addToMemes() {
   let savedMemes = loadMemesFromStorage();
   if (!savedMemes || !savedMemes.length) {
     savedMemes = [];
   }
   let memeDataUrl = gElCanvas.toDataURL();
+  const currMeme = gMeme;
+  currMeme.dataURL = memeDataUrl;
 
-  let savedMeme = {
-    id: savedMemes.length + 1,
-    dataURL: memeDataUrl,
-  };
+  savedMemes.push(currMeme);
+  gSavedMemes = savedMemes;
+  saveMemesToStorage();
+}
 
-  savedMemes.push(savedMeme);
+function updateSavedMemes(savedMemes) {
   gSavedMemes = savedMemes;
   saveMemesToStorage();
 }
@@ -155,8 +176,4 @@ function saveMemesToStorage() {
 function loadMemesFromStorage() {
   let savedMemes = loadFromStorage(SAVED_KEY);
   return savedMemes;
-}
-
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

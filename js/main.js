@@ -129,29 +129,39 @@ function closeShareMenu() {
   document.body.classList.remove('btn-menu-open');
 }
 
-function onInitMemes() {
+function onRenderMemes() {
   let savedMemes = loadMemesFromStorage();
 
   if (!savedMemes || !savedMemes.length) {
     document.querySelector('.no-memes').style.display = 'block';
+    document.querySelector('.memes-grid').style.display = 'none';
     return;
   } else {
     document.querySelector('.no-memes').style.display = 'none';
+    document.querySelector('.memes-grid').style.display = 'grid';
   }
 
-  let strHtml = savedMemes
-    .map((savedImg) => {
-      return `<img 
-                class="my-meme-img meme-${savedImg.id}" 
-                src="${savedImg.dataURL}" />`;
-    })
-    .join('');
+  renderMemes(savedMemes);
+}
 
-  document.querySelector('.memes-grid').innerHTML = strHtml;
+function renderMemes(savedMemes) {
+  let strHtml = savedMemes
+  .map((savedImg) => {
+    return `<div>
+              <img 
+                class="my-meme-img" 
+                src="${savedImg.dataURL}" />
+              <button onclick="onDeleteMeme('${savedImg.memeId}')">Delete</button>
+              <button onclick="onEditMeme('${savedImg.memeId}')">Edit</button>
+            </div>`;
+  })
+  .join('');
+
+document.querySelector('.memes-grid').innerHTML = strHtml;
 }
 
 function showMemesPage() {
-  onInitMemes();
+  onRenderMemes();
   hideGallery();
   hideEditor();
   closeShareMenu();
@@ -161,6 +171,21 @@ function showMemesPage() {
 
 function hideMemesPage() {
   document.querySelector('.memes-container').style.display = 'none';
+}
+
+function onDeleteMeme(currId) {
+  console.log('Im deleting');
+  let savedMemes = loadMemesFromStorage();
+  let idx = savedMemes.findIndex(meme => {
+    return currId === meme.memeId;
+  });
+  savedMemes.splice(idx, 1);
+  updateSavedMemes(savedMemes);
+  onRenderMemes();
+}
+
+function onEditMeme(id) {
+  console.log('Im editing');
 }
 
 // CANVAS OPERATIONS:
